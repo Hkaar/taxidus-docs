@@ -1,10 +1,200 @@
 ---
 import { Button } from "@/components/ui/button";
 import AppLayout from "@/layouts/AppLayout.astro";
+
+import Header from "@/components/Header";
+import Footer from "@/components/Footer.astro";
+import Hero from "@/components/Hero.astro";
+
+import { Image } from "astro:assets";
+import FAQAccordion from "@/components/FAQAccordion";
+
+import { ArrowUpRight } from "lucide-react";
 ---
 
 <AppLayout title="Welcome">
-  <main class="min-h-screen grid place-items-center">
-    <Button size={"lg"}>Press me!</Button>
+  <Header client:load />
+
+  <main class="min-h-screen">
+    <Hero />
+
+    <section id="about">
+      <div
+        class="container px-0 max-w-[85rem] grid grid-cols-1 lg:grid-cols-2 rounded-t-md border-t border-l border-r border-gray-300 dark:border-neutral-700"
+      >
+        <div
+          class="flex flex-col border-r border-gray-300 dark:border-neutral-700"
+        >
+          <div class="px-4 py-3">
+            <h3 class="text-3xl font-bold tracking-tight">About Taxidus</h3>
+          </div>
+
+          <div
+            class="border-t border-gray-300 dark:border-neutral-700 px-4 py-5 flex flex-col gap-3"
+          >
+            <p>
+              Taxidus is an online board game platform inspired by classic board
+              games, but remixed it to be customizable for every user. With a
+              variety of customization options, every user, every session can
+              have a game tailored fit for their tastes
+            </p>
+
+            <Button variant={"default"} className="w-fit">
+              Read more
+              <ArrowUpRight size={18} />
+            </Button>
+          </div>
+        </div>
+
+        <div class="grid place-items-center p-4">
+          <Image
+            src={"https://placehold.co/600x400.png"}
+            alt="Placholder"
+            width={640}
+            height={480}
+            class="size-full rounded-md object-cover"
+            loading={"lazy"}
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div
+        class="container px-0 max-w-[85rem] flex flex-col border-t border-r border-l border-gray-300 dark:border-neutral-700"
+      >
+        <div
+          class="px-4 py-5 text-center border-b border-gray-300 dark:border-neutral-700"
+        >
+          <h3 class="text-3xl font-bold tracking-tight">So what's included?</h3>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+          <div class="odd:border-r border-gray-300 dark:border-neutral-700 p-4">
+            <Image
+              src={"https://placehold.co/600x400.png"}
+              alt="Placholder"
+              width={640}
+              height={480}
+              class="size-full rounded-md object-cover"
+              loading={"lazy"}
+            />
+          </div>
+          <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+            <div
+              class="px-4 py-5 border-b border-gray-300 dark:border-neutral-700"
+            >
+              <h3 class="text-xl font-semibold tracking-tight">Customizable</h3>
+            </div>
+
+            <div class="flex flex-col gap-3 px-4 py-6">
+              <p>
+                In Taxidus, every game session can be freely customized
+                according to the user's desire. This could be from changing the
+                color of the grass by the side of some road to changing the
+                geography of the map in their session.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 border-t border-gray-300 dark:border-neutral-700"
+        >
+          <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+            <div
+              class="px-4 py-5 border-b border-gray-300 dark:border-neutral-700"
+            >
+              <h3 class="text-xl font-semibold tracking-tight">Anywhere</h3>
+            </div>
+
+            <div class="flex flex-col gap-3 px-4 py-6">
+              <p>
+                Taxidus can be played anywhere as long as there is an internet
+                connection to the server. This is because Taxidus, can be
+                accessed from our mobile app and the web through our web client.
+              </p>
+            </div>
+          </div>
+          <div class="odd:border-r border-gray-300 dark:border-neutral-700 p-4">
+            <Image
+              src={"https://placehold.co/600x400.png"}
+              alt="Placholder"
+              width={640}
+              height={480}
+              class="w-full h-full rounded-md object-cover"
+              loading={"lazy"}
+            />
+          </div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 border-t border-gray-300 dark:border-neutral-700"
+        >
+          <div class="odd:border-r border-gray-300 dark:border-neutral-700 p-4">
+            <Image
+              src={"https://placehold.co/600x400.png"}
+              alt="Placholder"
+              width={640}
+              height={480}
+              class="w-full h-full rounded-md object-cover"
+              loading={"lazy"}
+            />
+          </div>
+          <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+            <div
+              class="px-4 py-5 border-b border-gray-300 dark:border-neutral-700"
+            >
+              <h3 class="text-xl font-semibold tracking-tight">Extensible</h3>
+            </div>
+
+            <div class="flex flex-col gap-3 px-4 py-6">
+              <p>
+                Since Taxidus itself runs on a central API server for it's
+                system. Developers can make their own clients to access it,
+                provided that they follow through the documentation we provide.
+              </p>
+
+              <p>
+                This opens up possibilities of a vibrant eco-system of clients
+                that any user can make and customize even further to their
+                liking.
+              </p>
+
+              <p class="font-bold">
+                * Though be warned that i do not claim responsibilty if any of
+                these third-party clients cause any harm.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="mb-4">
+      <div
+        class="container px-0 max-w-[85rem] border rounded-b-md border-gray-300 dark:border-neutral-700 grid grid-cols-1 lg:grid-cols-2"
+      >
+        <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+          <div
+            class="px-4 py-3 border-b border-gray-300 dark:border-neutral-700"
+          >
+            <h3 class="text-3xl font-bold tracking-tight">FAQ</h3>
+          </div>
+
+          <div class="flex flex-col gap-3 px-4 py-6">
+            <p>
+              Here are some of the most frequently asked questions about Taxidus
+            </p>
+          </div>
+        </div>
+
+        <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+          <FAQAccordion client:visible />
+        </div>
+      </div>
+    </section>
   </main>
+
+  <Footer />
 </AppLayout>
