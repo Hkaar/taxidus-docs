@@ -1,0 +1,30 @@
+---
+import { Button } from "@/components/ui/button";
+import { ArrowUpRight, ScrollText } from "lucide-react";
+---
+
+<section id="hero" class="min-h-[50rem] flex">
+  <div class="container max-w-[85rem] flex-1 grid grid-cols-1 lg:grid-cols-2">
+    <div class="flex flex-col gap-8 h-full justify-center">
+      <div class="flex flex-col gap-3">
+        <h2 class="text-7xl font-extrabold tracking-tighter">
+          Customizable online board games
+        </h2>
+
+        <span class="text-2xl tracking-tight">
+          Play a customizable board game inspired by Dungeons & Dragons with
+          your friends
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <Button variant={"secondary"}>Learn more</Button>
+        <Button variant={"default"}>
+          Get started <ArrowUpRight size={18} />
+        </Button>
+      </div>
+    </div>
+
+    <div class="grid place-items-center"></div>
+  </div>
+</section>
