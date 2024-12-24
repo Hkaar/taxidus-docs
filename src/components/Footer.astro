@@ -1,0 +1,71 @@
+---
+import Github from "@/components/icons/Github";
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<footer class="border-t border-gray-200 dark:border-neutral-700">
+  <div class="py-6 min-h-44">
+    <div class="container max-w-[90rem]">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-1">
+            <span class="text-2xl font-extrabold tracking-tighter">TAXIDUS</span
+            >
+
+            <span class="text-base text-gray-400 dark:text-neutral-500">
+              Board games touched by your imaginations
+            </span>
+          </div>
+
+          <div class="flex items-center gap-1">
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              <Github />
+              <span class="text-xs">Github</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-8">
+          <div class="flex flex-col gap-3">
+            <span class="text-lg font-semibold">Other projects</span>
+
+            <nav class="flex flex-col gap-1 text-sm">
+              <a href="/">Taxidus Core</a>
+              <a href="/">Taxidus Mobile App</a>
+            </nav>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <span class="text-lg font-semibold">Explore more</span>
+
+            <nav class="flex flex-col gap-1 text-sm">
+              <a href="/">Documentation</a>
+              <a href="/">Start guide</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="py-2 bg-gray-50 dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-700"
+  >
+    <div class="container max-w-[90rem]">
+      <div class="flex items-center justify-between">
+        <span class="font-bold text-sm"
+          >Copyright &#169; 2024 Hkaar. All rights reserved.</span
+        >
+
+        <div class="flex items-center gap-2 text-sm">
+          <a href="/" class={buttonVariants({ variant: "link", size: "sm" })}
+            >Terms of service</a
+          >
+          <a href="/" class={buttonVariants({ variant: "link", size: "sm" })}
+            >Privacy Policy</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
