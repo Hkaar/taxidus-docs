@@ -43,7 +43,7 @@ function FAQAccordion() {
         className="border-none px-4 py-2"
       >
         <AccordionTrigger>
-          I'm a developer, i want to use your API is there any documentation?
+          Is there any api docs?
         </AccordionTrigger>
         <AccordionContent>
           Yes. It&apos;s animated by default, but you can disable it if you
