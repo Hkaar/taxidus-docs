@@ -1,0 +1,110 @@
+---
+import { cn } from "@/lib/utils";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+import { ArrowLeft, KeyRound, Mail, User } from "lucide-react";
+import PasswordInput from "@/components/ui/password-input";
+---
+
+<form class="flex flex-col gap-5 items-center w-1/2">
+  <div class="flex flex-col gap-2 items-center">
+    <h1 class="text-3xl font-bold tracking-tighter">Create your new account</h1>
+    <span class="text-sm text-gray-500 dark:text-neutral-500"
+      >Enter your new account details below</span
+    >
+  </div>
+
+  <div class="flex flex-col gap-1.5 w-full">
+    <Label htmlFor="username">Username</Label>
+    <div class="relative">
+      <Input
+        id="username"
+        placeholder="Username"
+        type="text"
+        required
+        name="username"
+        className="ps-9"
+      />
+
+      <User
+        size={18}
+        strokeWidth={1.5}
+        className="absolute top-3 ms-3 stroke-gray-500 dark:stroke-neutral-600"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-1.5 w-full">
+    <Label htmlFor="email">Email</Label>
+    <div class="relative">
+      <Input
+        id="email"
+        placeholder="Email"
+        type="email"
+        required
+        name="email"
+        className="ps-9"
+      />
+
+      <Mail
+        size={18}
+        strokeWidth={1.5}
+        className="absolute top-3 ms-3 stroke-gray-500 dark:stroke-neutral-600"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-1.5 w-full">
+    <Label htmlFor="password">Password</Label>
+    <div class="relative">
+      <PasswordInput
+        id="password"
+        placeholder="Password"
+        name="password"
+        required
+        inputClassName="ps-9"
+        client:load
+      />
+
+      <KeyRound
+        size={18}
+        strokeWidth={1.5}
+        className="absolute top-3 ms-3 stroke-gray-500 dark:stroke-neutral-600"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-1.5 w-full">
+    <Label htmlFor="password_confirmation">Password confirmation</Label>
+    <div class="relative">
+      <PasswordInput
+        id="password_confirmation"
+        placeholder="Confirm your password"
+        name="password_confirmation"
+        required
+        inputClassName="ps-9"
+        client:load
+      />
+
+      <KeyRound
+        size={18}
+        strokeWidth={1.5}
+        className="absolute top-3 ms-3 stroke-gray-500 dark:stroke-neutral-600"
+      />
+    </div>
+  </div>
+
+  <div class="flex gap-2 flex-col w-full">
+    <Button className="w-full"> Register </Button>
+    <a href="/" class={cn(buttonVariants({ variant: "outline" }), "w-full")}>
+      <ArrowLeft size={18} /> Back to home
+    </a>
+  </div>
+
+  <a href="/login" class="text-sm font-medium">
+    Already have an account? <span class="underline">Go login instead!</span>
+  </a>
+</form>
