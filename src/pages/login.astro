@@ -1,0 +1,17 @@
+---
+import LoginForm from "@/components/auth/LoginForm.astro";
+import AppLayout from "@/layouts/AppLayout.astro";
+---
+
+<AppLayout title="Login - Taxidus">
+  <main class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+    <section
+      class="h-full bg-gradient-to-b from-gray-400/50 to-gray-400 dark:from-neutral-600/50 dark:to-neutral-600"
+    >
+    </section>
+
+    <section class="h-full grid place-items-center">
+      <LoginForm />
+    </section>
+  </main>
+</AppLayout>
