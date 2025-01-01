@@ -1,0 +1,17 @@
+---
+import AppLayout from "@/layouts/AppLayout.astro";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "Untitled Page" } = Astro.props;
+---
+
+<AppLayout title={title}>
+  <div class="grid grid-cols-2">
+    <main class="prose prose-neutral dark:prose-gray dark:prose-invert">
+      <slot />
+    </main>
+  </div>
+</AppLayout>
