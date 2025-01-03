@@ -1,17 +1,59 @@
 ---
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header";
+import ContentSideBar from "@/components/ContentSideBar";
+import ContentTopBar from "@/components/ContentTopBar";
 import AppLayout from "@/layouts/AppLayout.astro";
+import type { MarkdownHeading } from "astro";
+import TableOfContents from "@/components/TableOfContents";
+import type { RawMenuItem } from "@/types/content";
+import { collections } from "@/content.config";
 
 interface Props {
+  pageTitle?: string;
   title?: string;
+  headings?: MarkdownHeading[];
+  menus?: RawMenuItem[];
+  collection: string;
 }
 
-const { title = "Untitled Page" } = Astro.props;
+const {
+  collection,
+  pageTitle = "Untitled Page",
+  title = "Untitled",
+  headings = [],
+  menus = [],
+} = Astro.props;
 ---
 
-<AppLayout title={title}>
-  <div class="grid grid-cols-2">
-    <main class="prose prose-neutral dark:prose-gray dark:prose-invert">
-      <slot />
+<AppLayout title={pageTitle}>
+  <Header client:load />
+
+  <div class="flex">
+    <ContentSideBar
+      items={menus}
+      className="flex-1"
+      collection={collection}
+      client:load
+    />
+
+    <main class="flex-1 flex flex-col items-center gap-8 min-h-screen">
+      <ContentTopBar title={title} lastModified="today" client:idle />
+
+      <div class="flex gap-8 px-8 p-7">
+        <article
+          class="prose prose-neutral dark:prose-gray dark:prose-invert md:w-[65ch]"
+        >
+          <slot />
+        </article>
+
+        <TableOfContents
+          items={headings}
+          className="hidden lg:block min-w-64 h-fit sticky top-4 z-10 border-l-[6px] border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900 px-4 py-3"
+        />
+      </div>
     </main>
   </div>
+
+  <Footer />
 </AppLayout>
