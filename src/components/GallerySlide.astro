@@ -1,0 +1,107 @@
+---
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+---
+
+<div
+  class="border-b border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900 flex items-center"
+>
+  <h3
+    class="text-3xl font-bold tracking-tight flex-1 px-4 py-5 border-r border-gray-200 dark:border-neutral-800"
+  >
+    Gallery
+  </h3>
+
+  <div class="flex">
+    <div class="border-r border-gray-200 dark:border-neutral-800">
+      <Button
+        className="size-full p-8 galleryPrev"
+        variant={"ghost"}
+        size={"icon"}
+      >
+        <ChevronLeft size={32} strokeWidth={1.5} />
+      </Button>
+    </div>
+
+    <div>
+      <Button
+        className="size-full p-8 galleryNext"
+        variant={"ghost"}
+        size={"icon"}
+      >
+        <ChevronRight strokeWidth={1.5} />
+      </Button>
+    </div>
+  </div>
+</div>
+
+<div class="swiper gallerySlide">
+  <div class="swiper-wrapper">
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 1
+    </div>
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 2
+    </div>
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 3
+    </div>
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 4
+    </div>
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 5
+    </div>
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 6
+    </div>
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 7
+    </div>
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 8
+    </div>
+    <div
+      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
+    >
+      Slide 9
+    </div>
+  </div>
+
+  <div class="swiper-pagination"></div>
+</div>
+
+<script>
+  import "swiper/css";
+  import Swiper from "swiper";
+  import { Autoplay, Navigation } from "swiper/modules";
+
+  var gallerySlide = new Swiper(".gallerySlide", {
+    modules: [Autoplay, Navigation],
+    autoplay: {
+      delay: 3500,
+    },
+    loop: true,
+    slidesPerView: 3.3,
+    navigation: {
+      nextEl: ".galleryNext",
+      prevEl: ".galleryPrev",
+    },
+  });
+</script>
