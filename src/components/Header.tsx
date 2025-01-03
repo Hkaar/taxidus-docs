@@ -54,21 +54,24 @@ const components: { title: string; href: string; description: string }[] = [
 
 interface HeaderProps {
   path?: string;
+  className?: string;
 }
 
-function Header({ path }: HeaderProps) {
+function Header({ className, path }: HeaderProps) {
   const [collapse, setCollapse] = useState(true);
 
   const toggleCollapse = () => setCollapse(prev => !prev);
 
   return (
-    <header className="py-4 border-b border-gray-200 dark:border-neutral-700">
-      <div className="container max-w-[90rem] flex gap-3 lg:items-center flex-col lg:flex-row justify-between">
+    <header className={cn("py-4 border-b border-gray-200 dark:border-neutral-800", className)}>
+      <div className="px-6 flex gap-3 lg:items-center flex-col lg:flex-row justify-between">
         <div className="flex flex-col lg:flex-row lg:items-center gap-3">
           <div className="flex justify-between items-center gap-3">
-            <h1 className="text-3xl font-extrabold tracking-tighter">TAXIDUS</h1>
+            <a href="/">
+              <h1 className="text-3xl font-extrabold tracking-tighter">TAXIDUS</h1>
+            </a>
 
-            <Button className="md:hidden" variant={"outline"} size={"icon"} onClick={toggleCollapse}>
+            <Button className="lg:hidden" variant={"outline"} size={"icon"} onClick={toggleCollapse}>
               <Menu size={18} />
             </Button>
           </div>
@@ -105,16 +108,16 @@ function Header({ path }: HeaderProps) {
                       </NavigationMenuLink>
                     </li>
 
-                    <ListItem href="/docs" title="Introduction">
+                    <ListItem href="/guides" title="Introduction">
                       An introduction guide on how to play Taxidus
                     </ListItem>
 
-                    <ListItem href="/docs/installation" title="How to play">
+                    <ListItem href="/guides/how-to-play" title="How to play">
                       Guides on how to play Taxidus on your device
                     </ListItem>
 
                     <ListItem
-                      href="/docs/primitives/typography"
+                      href="/guides/references"
                       title="References"
                     >
                       Extra stuff you might want to know when playing Taxidus
