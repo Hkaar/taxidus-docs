@@ -1,6 +1,15 @@
 ---
 import ContentLayout from "@/layouts/ContentLayout.astro";
+import type { RawMenuItem } from "@/types/content";
 import { getCollection, render } from "astro:content";
+
+const all = await getCollection("guides");
+
+const guides: RawMenuItem[] = all.map((guide) => ({
+  title: guide.data.title,
+  group: guide.data.group,
+  href: guide.data.slug,
+}));
 
 export async function getStaticPaths() {
   const guides = await getCollection("guides");
@@ -11,9 +20,15 @@ export async function getStaticPaths() {
 }
 
 const { guide } = Astro.props;
-const { Content } = await render(guide);
+const { Content, headings } = await render(guide);
 ---
 
-<ContentLayout title={guide.data.title}>
+<ContentLayout
+  pageTitle={`${guide.data.title} - Guides - Taxidus`}
+  title={guide.data.title}
+  headings={headings}
+  menus={guides}
+  collection="guides"
+>
   <Content />
 </ContentLayout>
