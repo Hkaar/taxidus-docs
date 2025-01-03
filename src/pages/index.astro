@@ -10,6 +10,7 @@ import { Image } from "astro:assets";
 import FAQAccordion from "@/components/FAQAccordion";
 
 import { ArrowUpRight } from "lucide-react";
+import GallerySlide from "@/components/GallerySlide.astro";
 ---
 
 <AppLayout title="Welcome">
@@ -20,17 +21,17 @@ import { ArrowUpRight } from "lucide-react";
 
     <section id="about">
       <div
-        class="container px-0 max-w-[85rem] grid grid-cols-1 lg:grid-cols-2 rounded-t-md border-t border-l border-r border-gray-300 dark:border-neutral-700"
+        class="container px-0 max-w-[85rem] grid grid-cols-1 lg:grid-cols-2 border-t border-l border-r border-gray-200 dark:border-neutral-800"
       >
         <div
-          class="flex flex-col border-r border-gray-300 dark:border-neutral-700"
+          class="flex flex-col border-r border-gray-200 dark:border-neutral-800"
         >
-          <div class="px-4 py-3">
+          <div class="px-4 py-3 bg-gray-50 dark:bg-neutral-900">
             <h3 class="text-3xl font-bold tracking-tight">About Taxidus</h3>
           </div>
 
           <div
-            class="border-t border-gray-300 dark:border-neutral-700 px-4 py-5 flex flex-col gap-3"
+            class="border-t border-gray-200 dark:border-neutral-800 px-4 py-5 flex flex-col gap-8"
           >
             <p>
               Taxidus is an online board game platform inspired by classic board
@@ -61,16 +62,20 @@ import { ArrowUpRight } from "lucide-react";
 
     <section id="features">
       <div
-        class="container px-0 max-w-[85rem] flex flex-col border-t border-r border-l border-gray-300 dark:border-neutral-700"
+        class="container px-0 max-w-[85rem] flex flex-col border-t border-r border-l border-gray-200 dark:border-neutral-800"
       >
         <div
-          class="px-4 py-5 text-center border-b border-gray-300 dark:border-neutral-700"
+          class="px-4 py-5 text-center border-b border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900"
         >
-          <h3 class="text-3xl font-bold tracking-tight">So what's included?</h3>
+          <h3
+            class="text-3xl font-bold tracking-tight bg-gray-50 dark:bg-neutral-900"
+          >
+            So what's included?
+          </h3>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2">
-          <div class="odd:border-r border-gray-300 dark:border-neutral-700 p-4">
+          <div class="odd:border-r border-gray-200 dark:border-neutral-800 p-4">
             <Image
               src={"https://placehold.co/600x400.png"}
               alt="Placholder"
@@ -80,9 +85,9 @@ import { ArrowUpRight } from "lucide-react";
               loading={"lazy"}
             />
           </div>
-          <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+          <div class="odd:border-r border-gray-200 dark:border-neutral-800">
             <div
-              class="px-4 py-5 border-b border-gray-300 dark:border-neutral-700"
+              class="px-4 py-5 border-b border-gray-200 dark:border-neutral-800"
             >
               <h3 class="text-xl font-semibold tracking-tight">Customizable</h3>
             </div>
@@ -99,11 +104,11 @@ import { ArrowUpRight } from "lucide-react";
         </div>
 
         <div
-          class="grid grid-cols-1 lg:grid-cols-2 border-t border-gray-300 dark:border-neutral-700"
+          class="grid grid-cols-1 lg:grid-cols-2 border-t border-gray-200 dark:border-neutral-800"
         >
-          <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+          <div class="odd:border-r border-gray-200 dark:border-neutral-800">
             <div
-              class="px-4 py-5 border-b border-gray-300 dark:border-neutral-700"
+              class="px-4 py-5 border-b border-gray-200 dark:border-neutral-800"
             >
               <h3 class="text-xl font-semibold tracking-tight">Anywhere</h3>
             </div>
@@ -116,7 +121,7 @@ import { ArrowUpRight } from "lucide-react";
               </p>
             </div>
           </div>
-          <div class="odd:border-r border-gray-300 dark:border-neutral-700 p-4">
+          <div class="odd:border-r border-gray-200 dark:border-neutral-800 p-4">
             <Image
               src={"https://placehold.co/600x400.png"}
               alt="Placholder"
@@ -129,9 +134,9 @@ import { ArrowUpRight } from "lucide-react";
         </div>
 
         <div
-          class="grid grid-cols-1 lg:grid-cols-2 border-t border-gray-300 dark:border-neutral-700"
+          class="grid grid-cols-1 lg:grid-cols-2 border-t border-gray-200 dark:border-neutral-800"
         >
-          <div class="odd:border-r border-gray-300 dark:border-neutral-700 p-4">
+          <div class="odd:border-r border-gray-200 dark:border-neutral-800 p-4">
             <Image
               src={"https://placehold.co/600x400.png"}
               alt="Placholder"
@@ -141,9 +146,9 @@ import { ArrowUpRight } from "lucide-react";
               loading={"lazy"}
             />
           </div>
-          <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+          <div class="odd:border-r border-gray-200 dark:border-neutral-800">
             <div
-              class="px-4 py-5 border-b border-gray-300 dark:border-neutral-700"
+              class="px-4 py-5 border-b border-gray-200 dark:border-neutral-800"
             >
               <h3 class="text-xl font-semibold tracking-tight">Extensible</h3>
             </div>
@@ -171,13 +176,21 @@ import { ArrowUpRight } from "lucide-react";
       </div>
     </section>
 
-    <section id="faq" class="mb-4">
+    <section id="gallery">
       <div
-        class="container px-0 max-w-[85rem] border rounded-b-md border-gray-300 dark:border-neutral-700 grid grid-cols-1 lg:grid-cols-2"
+        class="container px-0 max-w-[85rem] border-l border-t border-r border-gray-200 dark:border-neutral-800"
       >
-        <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+        <GallerySlide />
+      </div>
+    </section>
+
+    <section id="faq" class="mb-12">
+      <div
+        class="container px-0 max-w-[85rem] border border-gray-200 dark:border-neutral-800 grid grid-cols-1 lg:grid-cols-2"
+      >
+        <div class="odd:border-r border-gray-200 dark:border-neutral-800">
           <div
-            class="px-4 py-3 border-b border-gray-300 dark:border-neutral-700"
+            class="px-4 py-3 border-b border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900"
           >
             <h3 class="text-3xl font-bold tracking-tight">FAQ</h3>
           </div>
@@ -189,7 +202,7 @@ import { ArrowUpRight } from "lucide-react";
           </div>
         </div>
 
-        <div class="odd:border-r border-gray-300 dark:border-neutral-700">
+        <div class="odd:border-r border-gray-200 dark:border-neutral-800">
           <FAQAccordion client:visible />
         </div>
       </div>
