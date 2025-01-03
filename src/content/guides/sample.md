@@ -1,7 +1,7 @@
 ---
 title: "Sample Guide"
 slug: "sample-guide"
-date: "2024-12-24"
+lastModified: "2024-12-24"
 tags: ['example', 'test']
 ---
 

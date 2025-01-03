@@ -1,7 +1,8 @@
 ---
 title: "Sample Documentation"
 slug: "samples/long-doc"
-date: "2024-12-24"
+group: "samples"
+lastModified: "2024-12-24"
 tags: ['example', 'test']
 ---
 
