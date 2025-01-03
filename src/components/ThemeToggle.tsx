@@ -57,7 +57,7 @@ function ThemeToggle() {
           onClick={() => setThemeState("theme-light")}
           className={cn(
             theme === "theme-light" &&
-              "bg-gray-100 text-neutral-900 dark:bg-neutral-900 dark:text-gray-100 dark:stroke-gray-100 stroke-neutral-900",
+            "bg-gray-100 text-neutral-900 dark:bg-neutral-900 dark:text-gray-100 dark:stroke-gray-100 stroke-neutral-900",
           )}
         >
           <Sun size={18} />
@@ -67,7 +67,7 @@ function ThemeToggle() {
           onClick={() => setThemeState("dark")}
           className={cn(
             theme === "dark" &&
-              "bg-gray-100 text-neutral-900 dark:bg-neutral-900 dark:text-gray-100 dark:stroke-gray-100 stroke-neutral-900",
+            "bg-gray-100 text-neutral-900 dark:bg-neutral-900 dark:text-gray-100 dark:stroke-gray-100 stroke-neutral-900",
           )}
         >
           <Moon size={18} />
@@ -77,7 +77,7 @@ function ThemeToggle() {
           onClick={() => setThemeState("system")}
           className={cn(
             theme === "system" &&
-              "bg-gray-100 text-neutral-900 dark:bg-neutral-900 dark:text-gray-100 dark:stroke-gray-100 stroke-neutral-900",
+            "bg-gray-100 text-neutral-900 dark:bg-neutral-900 dark:text-gray-100 dark:stroke-gray-100 stroke-neutral-900",
           )}
         >
           <Monitor size={18} />
