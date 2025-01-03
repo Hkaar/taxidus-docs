@@ -26,4 +26,10 @@ export default defineConfig({
       status: 303,
     },
   },
+
+  vite: {
+    optimizeDeps: {
+      exclude: ["js-big-decimal"],
+    },
+  },
 });
