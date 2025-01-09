@@ -1,7 +1,10 @@
 ---
-import SignUpForm from "@/components/auth/SignUpForm.astro";
+import Guest from "@/components/auth/Guest";
+import SignUpForm from "@/components/auth/SignUpForm";
 import AppLayout from "@/layouts/AppLayout.astro";
 ---
+
+<Guest client:load />
 
 <AppLayout title="Sign up - Taxidus">
   <main class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
@@ -11,7 +14,7 @@ import AppLayout from "@/layouts/AppLayout.astro";
     </section>
 
     <section class="h-full grid place-items-center">
-      <SignUpForm />
+      <SignUpForm client:idle />
     </section>
   </main>
 </AppLayout>
