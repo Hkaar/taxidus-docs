@@ -1,33 +1,15 @@
-import { useEffect } from "react";
-import axios from "axios";
+import React from 'react';
+import useAuth from '@/hooks/useAuth';
+import { cn } from '@/lib/utils';
 
-/**
- * This component checks whether the user is authorized / logged in or not
- */
-const Authorized = () => {
-  const apiURL = import.meta.env.PUBLIC_API_URL;
+const Authorized = ({ children, invisible }: { children: React.ReactNode, invisible?: boolean }) => {
+  const { isAuthenticated, loading } = useAuth();
 
-  useEffect(() => {
-    const token = localStorage.getItem('session_token');
+  if (loading) {
+    return <div className={cn(invisible && 'hidden')}>Loading...</div>;
+  }
 
-    if (!token) {
-      globalThis.window.location.replace('/login');
-      return;
-    }
-
-    axios
-      .get(`${apiURL}/user`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .catch(() => {
-        localStorage.removeItem('session_token');
-        globalThis.window.location.replace('/login');
-      });
-  }, []);
-
-  return <div></div>;
+  return isAuthenticated ? <>{children}</> : null;
 };
 
 export default Authorized;
