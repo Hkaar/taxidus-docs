@@ -5,7 +5,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { ArrowLeft, KeyRound, Mail, User } from "lucide-react";
+import { ArrowLeft, KeyRound, Loader2, Mail, User } from "lucide-react";
 import PasswordInput from "@/components/ui/password-input";
 import { useState } from "react";
 
@@ -15,11 +15,15 @@ type RegisterResponse = {
 }
 
 const SignUpForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    setIsLoading(true);
 
     const apiURL = import.meta.env.PUBLIC_API_URL;
     const formData = new FormData(event.currentTarget);
@@ -39,7 +43,11 @@ const SignUpForm = () => {
 
       globalThis.window.location.replace('/home');
 
+      setIsLoading(false);
+
     } catch (error) {
+      setIsLoading(false);
+
       if (axios.isAxiosError(error)) {
         if (error.status) {
           console.log(error)
@@ -146,7 +154,10 @@ const SignUpForm = () => {
       </div>
 
       <div className="flex gap-2 flex-col w-full">
-        <Button className="w-full"> Register </Button>
+        <Button className="w-full" disabled={isLoading}>
+          {isLoading && <Loader2 strokeWidth={1.5} className="animate-spin" />}
+          Register
+        </Button>
         <a href="/" className={cn(buttonVariants({ variant: "outline" }), "w-full")}>
           <ArrowLeft size={18} /> Back to home
         </a>
