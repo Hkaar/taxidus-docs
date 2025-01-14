@@ -1,10 +1,10 @@
 ---
-import Guest from "@/components/auth/Guest";
+import GuestGate from "@/components/auth/GuestGate";
 import SignUpForm from "@/components/auth/SignUpForm";
 import AppLayout from "@/layouts/AppLayout.astro";
 ---
 
-<Guest client:load />
+<GuestGate client:load />
 
 <AppLayout title="Sign up - Taxidus">
   <main class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
