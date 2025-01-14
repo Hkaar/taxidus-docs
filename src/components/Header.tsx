@@ -13,8 +13,21 @@ import {
 import { Button, buttonVariants } from "@/components/ui/button";
 import Github from "@/components/icons/Github";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { Home, LogOut, Menu, Settings, User2 } from "lucide-react";
 import { useState } from "react";
+import Authorized from "@/components/auth/Authorized";
+import Guest from "@/components/auth/Guest";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
+
+import defaultAvatar from '@/assets/profile.png';
+import { logout } from "@/utils/auth";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -165,13 +178,50 @@ function Header({ className, path }: HeaderProps) {
           </div>
 
           <div className="flex items-center gap-1">
-            <a href="/sign-up" className={buttonVariants({ variant: "default" })}>
-              Sign up
-            </a>
+            <Authorized invisible>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <img src={defaultAvatar.src} alt="Profile" className="rounded-full aspect-square size-8" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <a href="/" className="flex items-center gap-2">
+                      <User2 strokeWidth={1.5} />
+                      Profile
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <a href="/" className="flex items-center gap-2">
+                      <Home strokeWidth={1.5} />
+                      Home
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <a href="/" className="flex items-center gap-2">
+                      <Settings strokeWidth={1.5} />
+                      Settings
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={async () => { await logout(); globalThis.window.location.reload() }}>
+                    <LogOut strokeWidth={1.5} />
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </Authorized>
 
-            <a href="/login" className={buttonVariants({ variant: "outline" })}>
-              Login
-            </a>
+            <Guest invisible>
+              <a href="/sign-up" className={buttonVariants({ variant: "default" })}>
+                Sign up
+              </a>
+
+              <a href="/login" className={buttonVariants({ variant: "outline" })}>
+                Login
+              </a>
+            </Guest>
           </div>
         </div>
       </div>
