@@ -1,0 +1,444 @@
+---
+import AuthorizedGate from "@/components/auth/AuthorizedGate";
+import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BoxIcon,
+  Clock,
+  ContainerIcon,
+  LogIn,
+  Pause,
+  Play,
+} from "lucide-react";
+---
+
+<AuthorizedGate client:load />
+
+<DashboardLayout title="Home - Dashboard - Taxidus" active="home">
+  <div class="py-7 px-8 flex flex-col gap-8">
+    <h1 class="font-bold tracking-wide text-4xl">Welcome back!</h1>
+
+    <div class="flex items-center gap-2">
+      <Button>
+        <Play strokeWidth={1.5} />
+        Start session
+      </Button>
+
+      <Button variant={"secondary"}>
+        <Pause strokeWidth={1.5} />
+        Resume session
+      </Button>
+    </div>
+
+    <section id="latest-sessions" class="flex flex-col gap-5">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-xl">
+          Latest active public sessions
+        </span>
+
+        <a href="/" class={buttonVariants({ variant: "default" })}>
+          See more
+          <ArrowRight strokeWidth={1.5} />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center gap-2">
+            <ContainerIcon strokeWidth={1.5} />
+            <CardTitle>Borgos Session</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            Come and join freely, we're having a board game marathon
+          </CardContent>
+
+          <CardFooter className="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span>Active for</span>
+              <Clock strokeWidth={1.5} size={18} />
+              <span>36 hours</span>
+            </div>
+
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              <LogIn strokeWidth={1.5} />
+              Join
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center gap-2">
+            <ContainerIcon strokeWidth={1.5} />
+            <CardTitle>Borgos Session</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            Come and join freely, we're having a board game marathon
+          </CardContent>
+
+          <CardFooter className="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span>Active for</span>
+              <Clock strokeWidth={1.5} size={18} />
+              <span>36 hours</span>
+            </div>
+
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              <LogIn strokeWidth={1.5} />
+              Join
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center gap-2">
+            <ContainerIcon strokeWidth={1.5} />
+            <CardTitle>Borgos Session</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            Come and join freely, we're having a board game marathon
+          </CardContent>
+
+          <CardFooter className="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span>Active for</span>
+              <Clock strokeWidth={1.5} size={18} />
+              <span>36 hours</span>
+            </div>
+
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              <LogIn strokeWidth={1.5} />
+              Join
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center gap-2">
+            <ContainerIcon strokeWidth={1.5} />
+            <CardTitle>Borgos Session</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            Come and join freely, we're having a board game marathon
+          </CardContent>
+
+          <CardFooter className="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span>Active for</span>
+              <Clock strokeWidth={1.5} size={18} />
+              <span>36 hours</span>
+            </div>
+
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              <LogIn strokeWidth={1.5} />
+              Join
+            </a>
+          </CardFooter>
+        </Card>
+      </div>
+    </section>
+
+    <section id="trending-packs" class="flex flex-col gap-5">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-xl"> Trending asset packs </span>
+
+        <a href="/" class={buttonVariants({ variant: "default" })}>
+          See more
+          <ArrowRight strokeWidth={1.5} />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        <Card>
+          <CardHeader className="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <BoxIcon strokeWidth={1.5} />
+                <CardTitle>osir-pack</CardTitle>
+              </div>
+
+              <span class="text-lg"> #1 </span>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <Badge> Steampunk </Badge>
+
+              <Badge> Fantasy </Badge>
+
+              <Badge> Trending </Badge>
+            </div>
+          </CardHeader>
+
+          <CardContent>
+            The osir pack provides you with all kinds of assets with a england
+            18th century theme added to them.
+          </CardContent>
+
+          <CardFooter>
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              More info
+              <ArrowUpRight strokeWidth={1.5} />
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <BoxIcon strokeWidth={1.5} />
+                <CardTitle>osir-pack</CardTitle>
+              </div>
+
+              <span class="text-lg"> #2 </span>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <Badge> Steampunk </Badge>
+
+              <Badge> Fantasy </Badge>
+
+              <Badge> Trending </Badge>
+            </div>
+          </CardHeader>
+
+          <CardContent>
+            The osir pack provides you with all kinds of assets with a england
+            18th century theme added to them.
+          </CardContent>
+
+          <CardFooter>
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              More info
+              <ArrowUpRight strokeWidth={1.5} />
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <BoxIcon strokeWidth={1.5} />
+                <CardTitle>osir-pack</CardTitle>
+              </div>
+
+              <span class="text-lg"> #3 </span>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <Badge> Steampunk </Badge>
+
+              <Badge> Fantasy </Badge>
+
+              <Badge> Trending </Badge>
+            </div>
+          </CardHeader>
+
+          <CardContent>
+            The osir pack provides you with all kinds of assets with a england
+            18th century theme added to them.
+          </CardContent>
+
+          <CardFooter>
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              More info
+              <ArrowUpRight strokeWidth={1.5} />
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <BoxIcon strokeWidth={1.5} />
+                <CardTitle>osir-pack</CardTitle>
+              </div>
+
+              <span class="text-lg"> #4 </span>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <Badge> Steampunk </Badge>
+
+              <Badge> Fantasy </Badge>
+
+              <Badge> Trending </Badge>
+            </div>
+          </CardHeader>
+
+          <CardContent>
+            The osir pack provides you with all kinds of assets with a england
+            18th century theme added to them.
+          </CardContent>
+
+          <CardFooter>
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              More info
+              <ArrowUpRight strokeWidth={1.5} />
+            </a>
+          </CardFooter>
+        </Card>
+      </div>
+    </section>
+
+    <section id="trending-packs" class="flex flex-col gap-5">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-xl"> Newly released asset packs </span>
+
+        <a href="/" class={buttonVariants({ variant: "default" })}>
+          See more
+          <ArrowRight strokeWidth={1.5} />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        <Card>
+          <CardHeader className="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <BoxIcon strokeWidth={1.5} />
+                <CardTitle>maya-pack</CardTitle>
+              </div>
+
+              <span class="text-lg"> #142 </span>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <Badge> Mayan </Badge>
+
+              <Badge> Aztec </Badge>
+
+              <Badge> Fantasy </Badge>
+            </div>
+          </CardHeader>
+
+          <CardContent>
+            The maya pack provides you with all kinds of assets with a mayan
+            aztec theme added to them.
+          </CardContent>
+
+          <CardFooter>
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              More info
+              <ArrowUpRight strokeWidth={1.5} />
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <BoxIcon strokeWidth={1.5} />
+                <CardTitle>osir-pack</CardTitle>
+              </div>
+
+              <span class="text-lg"> #345 </span>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <Badge> Steampunk </Badge>
+
+              <Badge> Fantasy </Badge>
+
+              <Badge> Trending </Badge>
+            </div>
+          </CardHeader>
+
+          <CardContent>
+            The osir pack provides you with all kinds of assets with a england
+            18th century theme added to them.
+          </CardContent>
+
+          <CardFooter>
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              More info
+              <ArrowUpRight strokeWidth={1.5} />
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <BoxIcon strokeWidth={1.5} />
+                <CardTitle>osir-pack</CardTitle>
+              </div>
+
+              <span class="text-lg"> #212 </span>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <Badge> Steampunk </Badge>
+
+              <Badge> Fantasy </Badge>
+
+              <Badge> Trending </Badge>
+            </div>
+          </CardHeader>
+
+          <CardContent>
+            The osir pack provides you with all kinds of assets with a england
+            18th century theme added to them.
+          </CardContent>
+
+          <CardFooter>
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              More info
+              <ArrowUpRight strokeWidth={1.5} />
+            </a>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <BoxIcon strokeWidth={1.5} />
+                <CardTitle>osir-pack</CardTitle>
+              </div>
+
+              <span class="text-lg"> #111 </span>
+            </div>
+
+            <div class="flex items-center gap-1">
+              <Badge> Steampunk </Badge>
+
+              <Badge> Fantasy </Badge>
+
+              <Badge> Trending </Badge>
+            </div>
+          </CardHeader>
+
+          <CardContent>
+            The osir pack provides you with all kinds of assets with a england
+            18th century theme added to them.
+          </CardContent>
+
+          <CardFooter>
+            <a href="/" class={buttonVariants({ variant: "outline" })}>
+              More info
+              <ArrowUpRight strokeWidth={1.5} />
+            </a>
+          </CardFooter>
+        </Card>
+      </div>
+    </section>
+  </div>
+</DashboardLayout>
