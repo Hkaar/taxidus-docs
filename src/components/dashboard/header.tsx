@@ -14,11 +14,11 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import defaultAvatar from '@/assets/profile.png';
-import { getUserDetails, logout } from "@/utils/auth";
+import defaultAvatar from "@/assets/profile.png";
+import { logout } from "@/utils/auth";
 
 interface HeaderProps {
   path?: string;
@@ -28,30 +28,49 @@ interface HeaderProps {
 const DashboardHeader = ({ className, path }: HeaderProps) => {
   const [collapse, setCollapse] = useState(true);
 
-  const toggleCollapse = () => setCollapse(prev => !prev);
+  const toggleCollapse = () => setCollapse((prev) => !prev);
 
   return (
-    <header className={cn("py-4 border-b border-gray-200 dark:border-neutral-800", className)}>
+    <header
+      className={cn(
+        "py-4 border-b border-gray-200 dark:border-neutral-800",
+        className
+      )}
+    >
       <div className="px-6 flex gap-3 lg:items-center flex-col lg:flex-row justify-between">
         <div className="flex flex-col lg:flex-row lg:items-center gap-3">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-5">
-              <SideBarToggle sideBarId="dashboard-side-bar" className="xl:hidden">
+              <SideBarToggle
+                sideBarId="dashboard-side-bar"
+                className="xl:hidden"
+              >
                 <PanelLeft strokeWidth={1.5} />
               </SideBarToggle>
 
               <a href="/">
-                <h1 className="text-3xl font-extrabold tracking-tighter">TAXIDUS</h1>
+                <h1 className="text-3xl font-extrabold tracking-tighter">
+                  TAXIDUS
+                </h1>
               </a>
             </div>
 
-            <Button className="lg:hidden" variant={"outline"} size={"icon"} onClick={toggleCollapse}>
+            <Button
+              className="lg:hidden"
+              variant={"outline"}
+              size={"icon"}
+              onClick={toggleCollapse}
+            >
               <Menu size={18} />
             </Button>
           </div>
         </div>
 
-        <div className={`flex-row justify-between lg:items-center gap-2 lg:flex ${collapse ? 'hidden' : 'flex'}`}>
+        <div
+          className={`flex-row justify-between lg:items-center gap-2 lg:flex ${
+            collapse ? "hidden" : "flex"
+          }`}
+        >
           <div className="flex items-center gap-1">
             <a
               href="/"
@@ -65,15 +84,18 @@ const DashboardHeader = ({ className, path }: HeaderProps) => {
           </div>
 
           <div className="hidden lg:block my-2 md:my-0 md:mx-1">
-            <div className="w-full h-px md:w-px md:h-4 bg-gray-100 md:bg-gray-300 dark:bg-neutral-700">
-            </div>
+            <div className="w-full h-px md:w-px md:h-4 bg-gray-100 md:bg-gray-300 dark:bg-neutral-700"></div>
           </div>
 
           <div className="flex items-center gap-1">
             <Authorized invisible>
               <DropdownMenu>
                 <DropdownMenuTrigger>
-                  <img src={defaultAvatar.src} alt="Profile" className="rounded-full aspect-square size-8" />
+                  <img
+                    src={defaultAvatar.src}
+                    alt="Profile"
+                    className="rounded-full aspect-square size-8"
+                  />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -97,7 +119,12 @@ const DashboardHeader = ({ className, path }: HeaderProps) => {
                     </a>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={async () => { await logout(); globalThis.window.location.reload() }}>
+                  <DropdownMenuItem
+                    onClick={async () => {
+                      await logout();
+                      globalThis.window.location.reload();
+                    }}
+                  >
                     <LogOut strokeWidth={1.5} />
                     Logout
                   </DropdownMenuItem>
@@ -106,11 +133,17 @@ const DashboardHeader = ({ className, path }: HeaderProps) => {
             </Authorized>
 
             <Guest invisible>
-              <a href="/sign-up" className={buttonVariants({ variant: "default" })}>
+              <a
+                href="/sign-up"
+                className={buttonVariants({ variant: "default" })}
+              >
                 Sign up
               </a>
 
-              <a href="/login" className={buttonVariants({ variant: "outline" })}>
+              <a
+                href="/login"
+                className={buttonVariants({ variant: "outline" })}
+              >
                 Login
               </a>
             </Guest>
@@ -119,7 +152,6 @@ const DashboardHeader = ({ className, path }: HeaderProps) => {
       </div>
     </header>
   );
-}
+};
 
 export default DashboardHeader;
-
