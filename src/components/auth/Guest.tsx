@@ -1,21 +1,15 @@
-import { useEffect } from "react";
+import React from 'react';
+import useAuth from '@/hooks/useAuth';
+import { cn } from '@/lib/utils';
 
-/**
- * This component checks to see whether the user is not logged in
- */
-const Guest = () => {
-  const apiURL = import.meta.env.PUBLIC_API_URL;
+const Guest = ({ children, invisible }: { children: React.ReactNode, invisible?: boolean }) => {
+  const { isAuthenticated, loading } = useAuth();
 
-  useEffect(() => {
-    const token = localStorage.getItem('session_token');
+  if (loading) {
+    return <div className={cn(invisible && 'hidden')}>Loading...</div>; // Show loading indicator
+  }
 
-    if (token) {
-      globalThis.window.location.replace('/home');
-      return;
-    }
-  }, []);
-
-  return <div></div>;
+  return !isAuthenticated ? <>{children}</> : null;
 };
 
 export default Guest;

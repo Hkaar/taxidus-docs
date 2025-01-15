@@ -6,9 +6,10 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { ArrowLeft, KeyRound, User } from "lucide-react";
+import { ArrowLeft, KeyRound, Loader2, User } from "lucide-react";
 import PasswordInput from "@/components/ui/password-input";
 import React, { useState, type FormEvent } from 'react';
+import { toast } from 'sonner';
 
 type LoginResponse = {
   message: string;
@@ -16,11 +17,15 @@ type LoginResponse = {
 }
 
 const LoginForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    setIsLoading(true);
 
     const apiURL = import.meta.env.PUBLIC_API_URL;
     const formData = new FormData(event.currentTarget);
@@ -35,23 +40,28 @@ const LoginForm = () => {
 
       globalThis.window.location.replace('/home');
 
+      toast.success("Successfully logged in!");
+
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
+
       if (axios.isAxiosError(error)) {
         if (error.status) {
-          console.log(error)
+          toast.error(`Failed to login! server responded with ${error.status}`);
         } else if (error.response) {
-          console.log(error)
+          toast.error(`Failed to login! request was malformed!`);
         } else {
-          console.log(error)
+          toast.error("Failed to login!");
         }
       } else {
-        console.error(error);
+        toast.error("Failed to login!");
       }
     }
   }
 
   return (
-    <form className="flex flex-col gap-5 items-center w-1/2" onSubmit={handleLogin}>
+    <form className="flex flex-col gap-5 items-center w-1/2 max-w-96" onSubmit={handleLogin}>
       <div className="flex flex-col gap-2 items-center">
         <h1 className="text-3xl font-bold tracking-tighter">Login to your account</h1>
         <span className="text-sm text-gray-500 dark:text-neutral-500"
@@ -111,7 +121,10 @@ const LoginForm = () => {
       </div>
 
       <div className="flex gap-2 flex-col w-full">
-        <Button className="w-full"> Login </Button>
+        <Button className="w-full" disabled={isLoading}>
+          {isLoading && <Loader2 strokeWidth={1.5} className='animate-spin' />}
+          Login
+        </Button>
         <a href="/" className={cn(buttonVariants({ variant: "outline" }), "w-full")}>
           <ArrowLeft size={18} /> Back to home
         </a>
