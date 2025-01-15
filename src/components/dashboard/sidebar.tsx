@@ -24,7 +24,7 @@ interface DashboardSideBarProps {
 
 const DashboardSidebar = ({ active }: DashboardSideBarProps) => {
   return (
-    <SideBarContainer id="dashboard-side-bar" className="md:max-w-80">
+    <SideBarContainer id="dashboard-side-bar" className="md:max-w-72">
       <SideBarHeader className="xl:hidden flex items-center justify-between">
         <span className="font-extrabold capitalize text-2xl">TAXIDUS</span>
 
@@ -67,32 +67,15 @@ const DashboardSidebar = ({ active }: DashboardSideBarProps) => {
           href="/explore"
         />
 
-        <SideBarMenu
-          title="Creation studio"
-          className="px-3"
-          icon={<Layers className="size-5" strokeWidth={1.3} />}
-        >
-          <div className="flex flex-col items-start border-l-2 ps-2 border-gray-200 dark:border-neutral-800">
-            <SideBarItem
-              title="Asset Editor"
-              icon={<LayoutDashboard strokeWidth={1.3} className="size-5" />}
-              className={cn(
-                "w-full justify-start [&_svg]:size-5",
-                active === "develop.editor" && "bg-gray-200 dark:bg-neutral-700"
-              )}
-              href="/develop/editor"
-            />
-            <SideBarItem
-              title="Manage Assets"
-              icon={<Box strokeWidth={1.3} className="size-5" />}
-              className={cn(
-                "w-full justify-start [&_svg]:size-5",
-                active === "develop.assets" && "bg-gray-200 dark:bg-neutral-700"
-              )}
-              href="/develop/assets"
-            />
-          </div>
-        </SideBarMenu>
+        <SideBarItem
+          title="Creation Studio"
+          icon={<Layers strokeWidth={1.3} size={24} />}
+          className={cn(
+            "text-base [&_svg]:size-5 w-full justify-start",
+            active === "studio" && "bg-gray-200 dark:bg-neutral-700"
+          )}
+          href="/studio"
+        />
       </SideBarContent>
     </SideBarContainer>
   );
