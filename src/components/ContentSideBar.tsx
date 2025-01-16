@@ -73,9 +73,15 @@ const ContentSideBar = ({ className, items = [], children, collection }: Content
           {nestedMenus.map((menu, index) => (
             <SideBarMenu
               key={`nested-${index}`}
-              title={menu.title}
-              items={menu.subMenus}
-            />
+              title={menu.title}>
+              <ul className="border-l-2 border-gray-200 dark:border-neutral-800">
+                {items?.map((item, index) => (
+                  <li key={`nested-side-bar-item-${index}`}>
+                    <SideBarItem title={item.title} href={item.href} />
+                  </li>
+                ))}
+              </ul>
+            </SideBarMenu>
           ))}
         </div>
 

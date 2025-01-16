@@ -13,28 +13,16 @@ import {
 import { Button, buttonVariants } from "@/components/ui/button";
 import Github from "@/components/icons/Github";
 import { cn } from "@/lib/utils";
-import { Home, LogOut, Menu, Settings, User2 } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
-import Authorized from "@/components/auth/Authorized";
-import Guest from "@/components/auth/Guest";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
-
-import defaultAvatar from '@/assets/profile.png';
-import { logout } from "@/utils/auth";
+import UserMenu from "./UserMenu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Introduction",
     href: "/docs",
     description:
-      "Start your journey reading through the documentation from here"
+      "Start your journey reading through the documentation from here",
   },
   {
     title: "How it works",
@@ -45,7 +33,8 @@ const components: { title: string; href: string; description: string }[] = [
   {
     title: "Development setup",
     href: "/docs",
-    description: "How to setup taxidus projects on your local machine for development"
+    description:
+      "How to setup taxidus projects on your local machine for development",
   },
   {
     title: "Concepts",
@@ -73,35 +62,57 @@ interface HeaderProps {
 function Header({ className, path }: HeaderProps) {
   const [collapse, setCollapse] = useState(true);
 
-  const toggleCollapse = () => setCollapse(prev => !prev);
+  const toggleCollapse = () => setCollapse((prev) => !prev);
 
   return (
-    <header className={cn("py-4 border-b border-gray-200 dark:border-neutral-800", className)}>
+    <header
+      className={cn(
+        "py-4 border-b border-gray-200 dark:border-neutral-800",
+        className
+      )}
+    >
       <div className="px-6 flex gap-3 lg:items-center flex-col lg:flex-row justify-between">
         <div className="flex flex-col lg:flex-row lg:items-center gap-3">
           <div className="flex justify-between items-center gap-3">
             <a href="/">
-              <h1 className="text-3xl font-extrabold tracking-tighter">TAXIDUS</h1>
+              <h1 className="text-3xl font-extrabold tracking-tighter">
+                TAXIDUS
+              </h1>
             </a>
 
-            <Button className="lg:hidden" variant={"outline"} size={"icon"} onClick={toggleCollapse}>
+            <Button
+              className="lg:hidden"
+              variant={"outline"}
+              size={"icon"}
+              onClick={toggleCollapse}
+            >
               <Menu size={18} />
             </Button>
           </div>
 
-          <NavigationMenu orientation="vertical" className={`items-start lg:items-center max-w-none lg:flex ${collapse ? 'hidden' : 'flex'}`}>
+          <NavigationMenu
+            orientation="vertical"
+            className={`items-start lg:items-center max-w-none lg:flex ${
+              collapse ? "hidden" : "flex"
+            }`}
+          >
             <NavigationMenuList className="flex-col lg:flex-row">
               <NavigationMenuItem className="w-full">
                 <NavigationMenuLink
                   href="/"
-                  className={cn(navigationMenuTriggerStyle(), "items-start lg:items-center")}
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "items-start lg:items-center"
+                  )}
                 >
                   Home
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem className="w-full">
-                <NavigationMenuTrigger className="items-start lg:items-center">Getting started</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="items-start lg:items-center">
+                  Getting started
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-3">
@@ -129,10 +140,7 @@ function Header({ className, path }: HeaderProps) {
                       Guides on how to play Taxidus on your device
                     </ListItem>
 
-                    <ListItem
-                      href="/guides/references"
-                      title="References"
-                    >
+                    <ListItem href="/guides/references" title="References">
                       Extra stuff you might want to know when playing Taxidus
                     </ListItem>
                   </ul>
@@ -140,7 +148,9 @@ function Header({ className, path }: HeaderProps) {
               </NavigationMenuItem>
 
               <NavigationMenuItem className="w-full">
-                <NavigationMenuTrigger className="items-start lg:items-center">Documentation</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="items-start lg:items-center">
+                  Documentation
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     {components.map((component) => (
@@ -159,7 +169,11 @@ function Header({ className, path }: HeaderProps) {
           </NavigationMenu>
         </div>
 
-        <div className={`flex-col-reverse lg:flex-row lg:items-center gap-2 lg:flex ${collapse ? 'hidden' : 'flex'}`}>
+        <div
+          className={`flex-col-reverse lg:flex-row lg:items-center gap-2 lg:flex ${
+            collapse ? "hidden" : "flex"
+          }`}
+        >
           <div className="flex items-center gap-1">
             <a
               href="/"
@@ -173,55 +187,11 @@ function Header({ className, path }: HeaderProps) {
           </div>
 
           <div className="hidden lg:block my-2 md:my-0 md:mx-1">
-            <div className="w-full h-px md:w-px md:h-4 bg-gray-100 md:bg-gray-300 dark:bg-neutral-700">
-            </div>
+            <div className="w-full h-px md:w-px md:h-4 bg-gray-100 md:bg-gray-300 dark:bg-neutral-700"></div>
           </div>
 
           <div className="flex items-center gap-1">
-            <Authorized invisible>
-              <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <img src={defaultAvatar.src} alt="Profile" className="rounded-full aspect-square size-8" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <a href="/" className="flex items-center gap-2">
-                      <User2 strokeWidth={1.5} />
-                      Profile
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/" className="flex items-center gap-2">
-                      <Home strokeWidth={1.5} />
-                      Home
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/" className="flex items-center gap-2">
-                      <Settings strokeWidth={1.5} />
-                      Settings
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={async () => { await logout(); globalThis.window.location.reload() }}>
-                    <LogOut strokeWidth={1.5} />
-                    Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </Authorized>
-
-            <Guest invisible>
-              <a href="/sign-up" className={buttonVariants({ variant: "default" })}>
-                Sign up
-              </a>
-
-              <a href="/login" className={buttonVariants({ variant: "outline" })}>
-                Login
-              </a>
-            </Guest>
+            <UserMenu />
           </div>
         </div>
       </div>

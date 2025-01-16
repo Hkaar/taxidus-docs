@@ -1,0 +1,119 @@
+---
+import AuthorizedGate from "@/components/auth/AuthorizedGate";
+import SessionCard from "@/components/game/SessionCard";
+import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+import {
+  Play,
+  Pause,
+  HistoryIcon,
+  ArrowRight,
+  SearchIcon,
+  Clock,
+  ContainerIcon,
+  LogIn,
+} from "lucide-react";
+---
+
+<AuthorizedGate client:load />
+
+<DashboardLayout title="Home - Dashboard" active="home">
+  <div class="py-7 px-8 flex flex-col gap-8">
+    <section class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <Button size={"lg"}>
+          <Play strokeWidth={1.5} />
+          Start session
+        </Button>
+
+        <Button variant={"secondary"} size={"lg"}>
+          <Pause strokeWidth={1.5} />
+          Resume session
+        </Button>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="relative">
+          <Input
+            id="username"
+            placeholder="Search for a session"
+            type="text"
+            required
+            name="username"
+            autoComplete="username"
+            className="ps-9"
+          />
+
+          <SearchIcon
+            size={18}
+            strokeWidth={1.5}
+            className="absolute top-2.5 ms-3 stroke-gray-500 dark:stroke-neutral-600"
+          />
+        </div>
+
+        <a href="/" class={buttonVariants({ variant: "outline" })}>
+          <HistoryIcon strokeWidth={1.5} />
+          History
+        </a>
+      </div>
+    </section>
+
+    <section class="flex flex-col gap-5">
+      <span class="font-semibold text-xl"> Last sessions played </span>
+
+      <div class="grid grid-cols-4 gap-4">
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+      </div>
+    </section>
+
+    <section class="flex flex-col gap-5">
+      <span class="font-semibold text-xl"> Latest active public sessions </span>
+
+      <div class="grid grid-cols-4 gap-4">
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+      </div>
+    </section>
+  </div>
+</DashboardLayout>

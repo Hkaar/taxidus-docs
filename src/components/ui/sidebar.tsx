@@ -1,8 +1,17 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants, type ButtonProps } from "@/components/ui/button";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./accordion";
+import {
+  Button,
+  buttonVariants,
+  type ButtonProps,
+} from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./accordion";
 
 const ToggleSideBar = (elementID: string, forceClose?: boolean) => {
   const sidebar = document.getElementById(elementID);
@@ -20,9 +29,10 @@ const ToggleSideBar = (elementID: string, forceClose?: boolean) => {
     sidebar.classList.remove("-translate-x-full");
     overlay?.classList.remove("hidden");
   }
-}
+};
 
-export interface SideBarOverlayProps extends Omit<React.ComponentProps<"div">, "className" | "children"> {
+export interface SideBarOverlayProps
+  extends Omit<React.ComponentProps<"div">, "className" | "children"> {
   sideBarId: string;
   className?: string;
 }
@@ -41,26 +51,37 @@ const SideBarOverlay = ({ sideBarId, className }: SideBarOverlayProps) => {
   );
 };
 
-export interface SideBarContainerProps extends Omit<React.ComponentProps<"div">, "className" | "children"> {
+export interface SideBarContainerProps
+  extends Omit<React.ComponentProps<"div">, "className" | "children"> {
   id: string;
   className?: string;
   children?: React.ReactNode;
 }
 
-const SideBarContainer = React.forwardRef<HTMLDivElement, SideBarContainerProps>(
-  ({ id, className, children, ...props }, ref) => {
-    return (
-      <>
-        <SideBarOverlay sideBarId={id} />
-        <div className={cn("fixed top-0 flex flex-col w-screen lg:w-full -translate-x-full overflow-y-auto max-w-full min-h-screen z-40 transition-all duration-300 ease-in-out md:max-w-96 xl:relative xl:z-0 xl:h-auto xl:translate-x-0 bg-gray-100 dark:bg-neutral-900", className)} ref={ref} id={id} {...props}>
-          {children}
-        </div>
-      </>
-    )
-  }
-)
+const SideBarContainer = React.forwardRef<
+  HTMLDivElement,
+  SideBarContainerProps
+>(({ id, className, children, ...props }, ref) => {
+  return (
+    <>
+      <SideBarOverlay sideBarId={id} />
+      <div
+        className={cn(
+          "fixed top-0 flex flex-col w-screen lg:w-full -translate-x-full overflow-y-auto max-w-full min-h-screen z-40 transition-all duration-300 ease-in-out md:max-w-96 xl:relative xl:z-0 xl:h-auto xl:translate-x-0 bg-gray-50 dark:bg-neutral-900",
+          className
+        )}
+        ref={ref}
+        id={id}
+        {...props}
+      >
+        {children}
+      </div>
+    </>
+  );
+});
 
-export interface SideBarHeaderProps extends Omit<React.ComponentProps<"div">, "className" | "children"> {
+export interface SideBarHeaderProps
+  extends Omit<React.ComponentProps<"div">, "className" | "children"> {
   className?: string;
   children?: React.ReactNode;
 }
@@ -68,14 +89,19 @@ export interface SideBarHeaderProps extends Omit<React.ComponentProps<"div">, "c
 const SideBarHeader = React.forwardRef<HTMLDivElement, SideBarHeaderProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div className={cn("px-6 py-5 bg-gray-200 dark:bg-neutral-800", className)} ref={ref} {...props}>
+      <div
+        className={cn("px-6 py-5 bg-gray-200 dark:bg-neutral-800", className)}
+        ref={ref}
+        {...props}
+      >
         {children}
       </div>
-    )
+    );
   }
-)
+);
 
-export interface SideBarContentProps extends Omit<React.ComponentProps<"div">, "className" | "children"> {
+export interface SideBarContentProps
+  extends Omit<React.ComponentProps<"div">, "className" | "children"> {
   className?: string;
   children?: React.ReactNode;
 }
@@ -86,11 +112,12 @@ const SideBarContent = React.forwardRef<HTMLDivElement, SideBarContentProps>(
       <div className={cn("flex-1 px-6 py-3", className)} ref={ref} {...props}>
         {children}
       </div>
-    )
+    );
   }
-)
+);
 
-export interface SideBarFooterProps extends Omit<React.ComponentProps<"div">, "className" | "children"> {
+export interface SideBarFooterProps
+  extends Omit<React.ComponentProps<"div">, "className" | "children"> {
   className?: string;
   children?: React.ReactNode;
 }
@@ -98,27 +125,43 @@ export interface SideBarFooterProps extends Omit<React.ComponentProps<"div">, "c
 const SideBarFooter = React.forwardRef<HTMLDivElement, SideBarFooterProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div className={cn("px-6 py-5 bg-gray-200 dark:bg-neutral-800", className)} ref={ref} {...props}>
+      <div
+        className={cn("px-6 py-5 bg-gray-200 dark:bg-neutral-800", className)}
+        ref={ref}
+        {...props}
+      >
         {children}
       </div>
-    )
+    );
   }
-)
+);
 
 interface SideBarToggleProps extends ButtonProps {
   sideBarId: string;
   variant?: "outline" | "ghost";
+  forceClose?: boolean;
 }
 
-const SideBarToggle = ({ className, children, variant, sideBarId }: SideBarToggleProps) => {
-  const handleToggle = () => ToggleSideBar(sideBarId);
+const SideBarToggle = ({
+  className,
+  children,
+  variant,
+  sideBarId,
+  forceClose,
+}: SideBarToggleProps) => {
+  const handleToggle = () => ToggleSideBar(sideBarId, forceClose);
 
   return (
-    <Button className={className} variant={variant || "outline"} size={"icon"} onClick={handleToggle}>
+    <Button
+      className={className}
+      variant={variant || "outline"}
+      size={"icon"}
+      onClick={handleToggle}
+    >
       {children}
     </Button>
-  )
-}
+  );
+};
 
 interface SideBarItemProps {
   title: string;
@@ -129,7 +172,14 @@ interface SideBarItemProps {
 
 const SideBarItem = ({ title, href, icon, className }: SideBarItemProps) => {
   return (
-    <a href={href} className={cn("flex items-center gap-2", buttonVariants({ variant: "link" }), className)}>
+    <a
+      href={href}
+      className={cn(
+        "flex items-center gap-2",
+        buttonVariants({ variant: "link" }),
+        className
+      )}
+    >
       {icon} {title}
     </a>
   );
@@ -138,16 +188,21 @@ const SideBarItem = ({ title, href, icon, className }: SideBarItemProps) => {
 export type SideBarMenuItem = {
   title: string;
   href: string;
-}
+};
 
 interface SideBarMenuProps {
   title: string;
   icon?: React.ReactNode;
   className?: string;
-  items?: SideBarMenuItem[];
+  children?: React.ReactNode;
 }
 
-const SideBarMenu = ({ title, icon, items, className }: SideBarMenuProps) => {
+const SideBarMenu = ({
+  title,
+  icon,
+  children,
+  className,
+}: SideBarMenuProps) => {
   return (
     <Accordion type="single" className="w-full" collapsible>
       <AccordionItem value="item-1" className={cn("border-0", className)}>
@@ -157,18 +212,10 @@ const SideBarMenu = ({ title, icon, items, className }: SideBarMenuProps) => {
             {title}
           </span>
         </AccordionTrigger>
-        <AccordionContent>
-          <ul className="border-l-2 border-gray-200 dark:border-neutral-800">
-            {items?.map((item, index) => (
-              <li key={`nested-side-bar-item-${index}`}>
-                <SideBarItem title={item.title} href={item.href} />
-              </li>
-            ))}
-          </ul>
-        </AccordionContent>
+        <AccordionContent>{children}</AccordionContent>
       </AccordionItem>
     </Accordion>
-  )
+  );
 };
 
 export {
@@ -180,4 +227,4 @@ export {
   SideBarItem,
   SideBarMenu,
   ToggleSideBar,
-}
+};

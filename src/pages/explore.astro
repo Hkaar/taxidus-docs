@@ -1,0 +1,192 @@
+---
+import AuthorizedGate from "@/components/auth/AuthorizedGate";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { ExploreSearchFilter } from "@/components/dashboard/search-filters";
+
+import DashboardLayout from "@/layouts/DashboardLayout.astro";
+
+import { ArrowRight, SearchIcon } from "lucide-react";
+import PackCard from "@/components/game/PackCard";
+import SessionCard from "@/components/game/SessionCard";
+---
+
+<AuthorizedGate client:load />
+
+<DashboardLayout title="Explore - Dashboard - Taxidus" active="explore">
+  <div class="py-7 px-8 flex flex-col gap-8">
+    <section class="flex flex-col gap-5">
+      <div class="flex items-center gap-3 justify-between">
+        <h1 class="font-bold text-3xl">Explore</h1>
+        <div class="flex items-center gap-2">
+          <form action="/" class="flex items-center gap-1 w-full max-w-[42rem]">
+            <div class="relative w-full">
+              <Input
+                id="username"
+                placeholder="Start searching"
+                type="text"
+                required
+                name="username"
+                autoComplete="username"
+                className="ps-9"
+              />
+
+              <SearchIcon
+                size={18}
+                strokeWidth={1.5}
+                className="absolute top-2.5 ms-3 stroke-gray-500 dark:stroke-neutral-600"
+              />
+            </div>
+
+            <Button variant={"default"}> Search </Button>
+          </form>
+
+          <ExploreSearchFilter
+            filters={["Session", "Pack", "Fantasy", "Medieval"]}
+            client:idle
+          />
+        </div>
+      </div>
+
+      <div id="hero" class="min-h-[50vh] bg-gray-500 rounded-lg"></div>
+    </section>
+
+    <section id="latest-sessions" class="flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-xl">
+          Latest active public sessions
+        </span>
+
+        <a href="/" class={buttonVariants({ variant: "default" })}>
+          See more
+          <ArrowRight strokeWidth={1.5} />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        <SessionCard title="Test session" activeFor={45} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+
+        <SessionCard title="Test session" activeFor={45} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+
+        <SessionCard title="Test session" activeFor={45} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+
+        <SessionCard title="Test session" activeFor={145} href="/">
+          Come and join freely, we're having a board game marathon
+        </SessionCard>
+      </div>
+    </section>
+
+    <section id="trending-packs" class="flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-xl"> Trending asset packs </span>
+
+        <a href="/" class={buttonVariants({ variant: "default" })}>
+          See more
+          <ArrowRight strokeWidth={1.5} />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        <PackCard
+          title="osir-pack"
+          href="/"
+          ranking={1}
+          tags={["Steampunk", "Fantasy", "England"]}
+        >
+          The osir pack provides you with all kinds of assets with a england
+          18th century theme added to them.
+        </PackCard>
+
+        <PackCard
+          title="lenai-pack"
+          href="/"
+          ranking={2}
+          tags={["Floral", "Fantasy", "Magic"]}
+        >
+          The osir pack provides you with all kinds of assets with a england
+          18th century theme added to them.
+        </PackCard>
+
+        <PackCard
+          title="osir-pack"
+          href="/"
+          ranking={3}
+          tags={["Steampunk", "Fantasy", "England"]}
+        >
+          The osir pack provides you with all kinds of assets with a england
+          18th century theme added to them.
+        </PackCard>
+
+        <PackCard
+          title="osir-pack"
+          href="/"
+          ranking={4}
+          tags={["Steampunk", "Fantasy", "England"]}
+        >
+          The osir pack provides you with all kinds of assets with a england
+          18th century theme added to them.
+        </PackCard>
+      </div>
+    </section>
+
+    <section id="trending-packs" class="flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-xl"> Newly released asset packs </span>
+
+        <a href="/" class={buttonVariants({ variant: "default" })}>
+          See more
+          <ArrowRight strokeWidth={1.5} />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4">
+        <PackCard
+          title="mayan-pack"
+          href="/"
+          ranking={152}
+          tags={["Mayan", "Fantasy", "Aztec"]}
+        >
+          The maya pack provides you with all kinds of assets with a mayan aztec
+          theme added to them.
+        </PackCard>
+
+        <PackCard
+          title="osir-pack"
+          href="/"
+          ranking={1}
+          tags={["Steampunk", "Fantasy", "England"]}
+        >
+          The osir pack provides you with all kinds of assets with a england
+          18th century theme added to them.
+        </PackCard>
+
+        <PackCard
+          title="osir-pack"
+          href="/"
+          ranking={1}
+          tags={["Steampunk", "Fantasy", "England"]}
+        >
+          The osir pack provides you with all kinds of assets with a england
+          18th century theme added to them.
+        </PackCard>
+
+        <PackCard
+          title="osir-pack"
+          href="/"
+          ranking={1}
+          tags={["Steampunk", "Fantasy", "England"]}
+        >
+          The osir pack provides you with all kinds of assets with a england
+          18th century theme added to them.
+        </PackCard>
+      </div>
+    </section>
+  </div>
+</DashboardLayout>

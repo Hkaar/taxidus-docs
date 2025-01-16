@@ -9,7 +9,7 @@ interface LoadingOverlayProps {
 
 const LoadingOverlay = ({ children, className, percentage, visible }: LoadingOverlayProps) => {
   return visible && (
-    <div className={cn("fixed h-screen w-screen bg-neutral-950/75 dark:bg-gray-50/75", className)}>
+    <div className={cn("fixed h-screen w-screen bg-neutral-950/75 dark:bg-gray-50/35 z-[90]", className)}>
       {percentage && <span>{percentage}%</span>}
       {children}
     </div>
