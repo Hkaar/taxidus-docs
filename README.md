@@ -1,10 +1,7 @@
 # Taxidus Web
 
-The web app part of Taxidus, a RPG board game similar
+The official web client for Taxidus, a RPG board game similar
 to old style board games of old.
-
-Contains the documentation & tutorials about
-Taxidus, while also having a web client to play the game.
 
 ```ascii
           ／＞　 フ   _/￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣\
@@ -18,14 +15,28 @@ Taxidus, while also having a web client to play the game.
 ＼二)
 ```
 
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![Workflow Status](https://github.com/Hkaar/taxidus-web/workflows/CI/badge.svg)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
+## Features
+
+- A full web client for Taxidus
+- Online multiplayer
+- Customizable
+
 ## Requirements
 
 - Node.js >= 18
 
-## Local setup
+## Gallery
 
-Something's going to be here later
+Something's going to be here later...
+
+## Documentation
+
+Something's going to be here later...
 
 ## Contribution guide
 
-Something's going to be here later
+Something's going to be here later...
