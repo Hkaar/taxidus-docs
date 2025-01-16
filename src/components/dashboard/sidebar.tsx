@@ -47,15 +47,6 @@ const DashboardSidebar = ({ active }: DashboardSideBarProps) => {
           )}
           href="/home"
         />
-        <SideBarItem
-          title="Start Playing"
-          icon={<Play strokeWidth={1.3} size={24} />}
-          className={cn(
-            "text-base [&_svg]:size-5 w-full justify-start",
-            active === "play" && "bg-gray-200 dark:bg-neutral-700"
-          )}
-          href="/session"
-        />
 
         <SideBarItem
           title="Explore"
