@@ -8,67 +8,66 @@ import { Label } from "@/components/ui/label";
 import { ArrowLeft, KeyRound, Loader2, Mail, User } from "lucide-react";
 import PasswordInput from "@/components/ui/password-input";
 import { useState } from "react";
+import { toast } from "sonner";
+import { apiService } from "@/services/api/APIService";
 
 type RegisterResponse = {
-  message: string,
-  token: string,
-}
+  message: string;
+  expires_in: number;
+  access_token: string;
+  refresh_token: string;
+  token_type: string;
+};
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   const handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setIsLoading(true);
 
-    const apiURL = import.meta.env.PUBLIC_API_URL;
     const formData = new FormData(event.currentTarget);
 
     if (password !== passwordConfirm) {
-      console.error("Not same");
+      toast.error("Password needs to be the same as confirmed!");
       return;
     }
 
     try {
-      const response = await axios.post(`${apiURL}/register`, formData, {
-        withCredentials: true
-      });
-      const data: RegisterResponse = response.data;
+      const response = await apiService.post<RegisterResponse>(
+        "/service",
+        formData
+      );
 
-      localStorage.setItem('session_token', data.token.split('|')[1]);
-
-      globalThis.window.location.replace('/home');
-
-      setIsLoading(false);
-
-    } catch (error) {
-      setIsLoading(false);
-
-      if (axios.isAxiosError(error)) {
-        if (error.status) {
-          console.log(error)
-        } else if (error.response) {
-          console.log(error)
-        } else {
-          console.log(error)
-        }
-      } else {
-        console.error(error);
+      if (response.success) {
+        localStorage.setItem("access_token", response.data.access_token);
+        localStorage.setItem("refresh_token", response.data.refresh_token);
+        window.location.replace("/home");
+        toast.success("Successfully logged in!");
       }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <form className="flex flex-col gap-5 items-center w-1/2" onSubmit={handleRegister}>
+    <form
+      className="flex flex-col gap-5 items-center w-1/2"
+      onSubmit={handleRegister}
+    >
       <div className="flex flex-col gap-2 items-center">
-        <h1 className="text-3xl font-bold tracking-tighter">Create your new account</h1>
-        <span className="text-sm text-gray-500 dark:text-neutral-500"
-        >Enter your new account details below</span
-        >
+        <h1 className="text-3xl font-bold tracking-tighter">
+          Create your new account
+        </h1>
+        <span className="text-sm text-gray-500 dark:text-neutral-500">
+          Enter your new account details below
+        </span>
       </div>
 
       <div className="flex flex-col gap-1.5 w-full">
@@ -121,7 +120,9 @@ const SignUpForm = () => {
             required
             inputClassName="ps-9"
             value={password}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
           />
 
           <KeyRound
@@ -142,7 +143,9 @@ const SignUpForm = () => {
             required
             inputClassName="ps-9"
             value={passwordConfirm}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPasswordConfirm(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPasswordConfirm(e.target.value)
+            }
           />
 
           <KeyRound
@@ -158,16 +161,20 @@ const SignUpForm = () => {
           {isLoading && <Loader2 strokeWidth={1.5} className="animate-spin" />}
           Register
         </Button>
-        <a href="/" className={cn(buttonVariants({ variant: "outline" }), "w-full")}>
+        <a
+          href="/"
+          className={cn(buttonVariants({ variant: "outline" }), "w-full")}
+        >
           <ArrowLeft size={18} /> Back to home
         </a>
       </div>
 
       <a href="/login" className="text-sm font-medium">
-        Already have an account? <span className="underline">Go login instead!</span>
+        Already have an account?{" "}
+        <span className="underline">Go login instead!</span>
       </a>
     </form>
   );
-}
+};
 
 export default SignUpForm;

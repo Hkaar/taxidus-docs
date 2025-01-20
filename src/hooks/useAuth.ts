@@ -1,39 +1,34 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { apiService } from '@/services/api/APIService';
 
 const useAuth = () => {
     const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const apiURL = import.meta.env.PUBLIC_API_URL;
-
     useEffect(() => {
         const checkAuth = async () => {
-            const token = localStorage.getItem('session_token');
+            const accessToken = localStorage.getItem('access_token');
 
-            if (!token) {
+            if (!accessToken) {
                 setLoading(false);
                 setIsAuthenticated(false);
                 return;
             }
 
             try {
-                await axios.get(`${apiURL}/user`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                setLoading(false);
-                setIsAuthenticated(true);
+                const response = await apiService.get('user', true);
+                setIsAuthenticated(response.success);
             } catch (error) {
-                localStorage.removeItem('session_token');
-                setLoading(false);
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('refresh_token');
                 setIsAuthenticated(false);
+            } finally {
+                setLoading(false);
             }
         };
 
         checkAuth();
-    }, [apiURL]);
+    }, []);
 
     return { isAuthenticated, loading };
 };
