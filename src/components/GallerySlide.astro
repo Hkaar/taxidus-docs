@@ -1,90 +1,128 @@
 ---
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import { Image } from "astro:assets";
+
+import Dice1 from "@/assets/placeholders/dice-1.jpg";
+import Dice2 from "@/assets/placeholders/dice-2.jpg";
+import Dice3 from "@/assets/placeholders/dice-3.jpg";
+import Dice4 from "@/assets/placeholders/dice-4.jpg";
 ---
 
-<div
-  class="border-b border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900 flex items-center"
->
-  <h3
-    class="text-3xl font-bold tracking-tight flex-1 px-4 py-5 border-r border-gray-200 dark:border-neutral-800"
+<div class="flex gap-4">
+  <Button
+    className="flex-1 p-8 border-r border-gray-200 dark:border-neutral-800 max-h-full h-92 rounded-none galleryPrev"
+    variant={"ghost"}
+    size={"icon"}
   >
-    Gallery
-  </h3>
+    <ChevronLeft size={32} strokeWidth={1.5} />
+  </Button>
 
-  <div class="flex">
-    <div class="border-r border-gray-200 dark:border-neutral-800">
-      <Button
-        className="size-full p-8 galleryPrev"
-        variant={"ghost"}
-        size={"icon"}
-      >
-        <ChevronLeft size={32} strokeWidth={1.5} />
-      </Button>
+  <div class="swiper gallerySlide my-3">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
+      <div class="swiper-slide max-h-[24rem]">
+        <Image
+          src={Dice1}
+          alt="Placholder"
+          width={640}
+          height={480}
+          class="size-full rounded-md object-cover"
+          loading={"lazy"}
+        />
+      </div>
     </div>
 
-    <div>
-      <Button
-        className="size-full p-8 galleryNext"
-        variant={"ghost"}
-        size={"icon"}
-      >
-        <ChevronRight strokeWidth={1.5} />
-      </Button>
-    </div>
+    <div class="swiper-pagination"></div>
   </div>
-</div>
 
-<div class="swiper gallerySlide">
-  <div class="swiper-wrapper">
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 1
-    </div>
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 2
-    </div>
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 3
-    </div>
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 4
-    </div>
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 5
-    </div>
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 6
-    </div>
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 7
-    </div>
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 8
-    </div>
-    <div
-      class="swiper-slide min-h-80 min-w-80 odd:bg-gray-200 even:bg-slate-400"
-    >
-      Slide 9
-    </div>
-  </div>
-
-  <div class="swiper-pagination"></div>
+  <Button
+    className="min-h-full h-92 p-8 border-l border-gray-200 dark:border-neutral-800 rounded-none galleryNext"
+    variant={"ghost"}
+    size={"icon"}
+  >
+    <ChevronRight strokeWidth={1.5} />
+  </Button>
 </div>
 
 <script>
@@ -97,6 +135,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
     autoplay: {
       delay: 3500,
     },
+    spaceBetween: 12,
     loop: true,
     slidesPerView: 3.3,
     navigation: {
