@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
-function ThemeToggle() {
+function ThemeToggle({className}: {className?: string}) {
   const [theme, setThemeState] = useState<
     "theme-light" | "dark" | "system"
   >("theme-light");
@@ -30,7 +30,7 @@ function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className={className}>
           <Sun
             className={cn(
               "h-[1.2rem] w-[1.2rem] transition-all dark:stroke-gray-50",
