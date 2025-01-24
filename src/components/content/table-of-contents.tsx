@@ -1,6 +1,7 @@
 import type { MarkdownHeading } from "astro";
-import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
+
+import { buttonVariants } from "@/components/ui/button";
 
 interface TableOfContentsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "className" | "children"> {
   className?: string;
