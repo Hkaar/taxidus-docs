@@ -22,7 +22,7 @@ const ContentTopBar = ({ className, title, lastModified, editLink }: ContentTopB
       </div>
 
       <div className="px-4 py-3 flex-1 border-r border-gray-200 dark:border-neutral-800">
-        <span className="text-2xl font-semibold capitalize line-clamp-1">{title}</span>
+        <span className="text-xl font-bold capitalize line-clamp-1">{title}</span>
       </div>
 
       <div className="flex">
