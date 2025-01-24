@@ -1,95 +1,139 @@
 ---
 import Github from "@/components/icons/Github";
 import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { Box, Compass, Dot } from "lucide-react";
 ---
 
 <footer class="border-t border-gray-200 dark:border-neutral-800">
-  <div class="py-6 min-h-48">
-    <div class="px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-4">
-        <div class="flex flex-col gap-5">
-          <div class="flex flex-col gap-2">
-            <span class="text-2xl font-extrabold tracking-tighter">TAXIDUS</span
+  <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
+    <div
+      class="flex flex-col gap-5 px-4 py-3 lg:px-7 lg:py-6 border-r border-gray-200 dark:border-neutral-800"
+    >
+      <div class="flex flex-col gap-2">
+        <span class="text-2xl font-extrabold tracking-tighter">TAXIDUS</span>
+
+        <span class="text-base text-gray-400 dark:text-neutral-500">
+          Board games touched by your imaginations
+        </span>
+      </div>
+
+      <div class="flex items-center gap-1">
+        <a href="/" class={buttonVariants({ variant: "outline" })}>
+          <Github />
+          <span class="text-xs">Github</span>
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="grid place-items-center lg:col-span-2 border-r border-gray-200 dark:border-neutral-800 px-7 py-6 order-last lg:order-none"
+    >
+      <span class="italic text-lg"> "More than just a board game" </span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      <div class="flex flex-col border-t lg:border-t-0">
+        <div
+          class="flex items-center gap-2 px-4 py-3 border-r border-b dark:border-gray-200 border-neutral-800 bg-neutral-950 dark:bg-white text-white dark:text-neutral-950"
+        >
+          <Compass size={18} className="hidden xl:block" />
+          <span class="text-lg font-semibold">Explore more</span>
+        </div>
+
+        <nav
+          class="grid grid-cols-1 text-sm h-full border-r border-gray-200 dark:border-neutral-800"
+        >
+          <div class="flex items-center">
+            <a
+              href="/"
+              class={cn(
+                buttonVariants({ variant: "ghost" }),
+                "h-max w-full px-5 py-4 rounded-none justify-start lg:border-b-0 border-b border-gray-200 dark:border-neutral-800"
+              )}
             >
-
-            <span class="text-base text-gray-400 dark:text-neutral-500">
-              Board games touched by your imaginations
-            </span>
-          </div>
-
-          <div class="flex items-center gap-1">
-            <a href="/" class={buttonVariants({ variant: "outline" })}>
-              <Github />
-              <span class="text-xs">Github</span>
+              Documentation
             </a>
           </div>
+
+          <div class="flex items-center">
+            <a
+              href="/"
+              class={cn(
+                buttonVariants({ variant: "ghost" }),
+                "h-max w-full px-5 py-4 rounded-none justify-start lg:border-b-0 border-b border-gray-200 dark:border-neutral-800"
+              )}
+            >
+              Start guide
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="flex flex-col">
+        <div
+          class="flex items-center gap-2 px-4 py-3 border-b dark:border-gray-200 border-neutral-800 bg-neutral-950 dark:bg-white text-white dark:text-neutral-950"
+        >
+          <Box size={18} className="hidden xl:block" />
+          <span class="text-lg font-semibold">Our projects</span>
         </div>
 
-        <div class="grid place-items-center lg:col-span-2">
-          <span class="italic text-lg"> "More than just a board game" </span>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-              <Box size={18} />
-              <span class="text-xl font-semibold">Related projects</span>
-            </div>
-
-            <nav class="flex flex-col gap-1 text-sm">
-              <div class="flex items-center gap-2">
-                <Dot size={18} strokeWidth={1.5} />
-                <a href="/">Taxidus Core</a>
-              </div>
-
-              <div class="flex items-center gap-2">
-                <Dot size={18} strokeWidth={1.5} />
-                <a href="/">Taxidus Mobile App</a>
-              </div>
-            </nav>
+        <nav class="grid grid-cols-1 text-sm h-full">
+          <div class="flex items-center">
+            <a
+              href="/"
+              class={cn(
+                buttonVariants({ variant: "ghost" }),
+                "h-max w-full px-5 py-4 rounded-none justify-start lg:border-b-0 border-b border-gray-200 dark:border-neutral-800"
+              )}
+            >
+              Taxidus Core
+            </a>
           </div>
 
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-              <Compass size={18} />
-              <span class="text-xl font-semibold">Explore more</span>
-            </div>
-
-            <nav class="flex flex-col gap-1 text-sm">
-              <div class="flex items-center gap-2">
-                <Dot size={18} strokeWidth={1.5} />
-                <a href="/">Documentation</a>
-              </div>
-
-              <div class="flex items-center gap-2">
-                <Dot size={18} strokeWidth={1.5} />
-                <a href="/">Start guide</a>
-              </div>
-            </nav>
+          <div class="flex items-center">
+            <a
+              href="/"
+              class={cn(
+                buttonVariants({ variant: "ghost" }),
+                "h-max w-full px-5 py-4 rounded-none justify-start lg:border-b-0 border-b border-gray-200 dark:border-neutral-800"
+              )}
+            >
+              Taxidus Mobile App
+            </a>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   </div>
 
   <div
-    class="py-2 bg-gray-50 dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800"
+    class="bg-gray-50 dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800"
   >
-    <div class="px-6">
-      <div class="flex items-center justify-between">
-        <span class="font-bold text-sm"
-          >Copyright &#169; 2024 Hkaar. All rights reserved.</span
-        >
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-1">
+      <span class="font-semibold text-sm text-center lg:text-start px-5 py-4">
+        Copyright &#169; 2024 Hkaar. All rights reserved.
+      </span>
 
-        <div class="flex items-center gap-2 text-sm">
-          <a href="/" class={buttonVariants({ variant: "link", size: "sm" })}
-            >Terms of service</a
-          >
-          <a href="/" class={buttonVariants({ variant: "link", size: "sm" })}
-            >Privacy Policy</a
-          >
-        </div>
+      <div class="grid grid-cols-2 text-sm">
+        <a
+          href="/"
+          class={cn(
+            buttonVariants({ variant: "ghost", size: "sm" }),
+            "lg:border-l border-gray-200 dark:border-neutral-800 rounded-none h-max px-5 py-4"
+          )}
+        >
+          Terms of service
+        </a>
+        <a
+          href="/"
+          class={cn(
+            buttonVariants({ variant: "ghost", size: "sm" }),
+            "lg:border-l border-gray-200 dark:border-neutral-800 rounded-none h-max px-5 py-4"
+          )}
+        >
+          Privacy Policy
+        </a>
       </div>
     </div>
   </div>
