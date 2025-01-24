@@ -1,12 +1,11 @@
-import axios from 'axios';
 import { toast } from 'sonner';
-import { fetchAPI } from './network';
+import { apiService } from '@/services/api/APIService';
 
 export async function getUserDetails(key: string) {
     const raw = localStorage.getItem("user-data");
 
     if (!raw) {
-        const result = await fetchAPI<UserData>({ url: "/user", method: "GET", authorized: true });
+        const result = await apiService.get<UserData>("/user", true);
 
         if (result.error) {
             toast.error(result.error);
@@ -29,10 +28,11 @@ export async function getUserDetails(key: string) {
 }
 
 export async function logout() {
-    const result = await fetchAPI<{ message: string }>({ url: "/logout", method: "POST", authorized: true });
+    const result = await apiService.post("/logout", {}, true);
 
     if (result.success) {
-        localStorage.removeItem('session_token');
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
 
         toast.success("Successfully logged out!");
         return true;

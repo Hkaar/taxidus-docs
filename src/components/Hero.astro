@@ -17,9 +17,16 @@ import { ArrowUpRight, ScrollText } from "lucide-react";
         </span>
       </div>
 
-      <div class="flex items-center gap-2">
-        <Button variant={"secondary"}>Learn more</Button>
-        <Button variant={"default"}>
+      <div class="grid grid-cols-2 w-fit gap-2">
+        <Button
+          variant={"secondary"}
+          className="rounded-none rounded-bl-xl px-5 py-4 h-max"
+          >Learn more</Button
+        >
+        <Button
+          variant={"default"}
+          className="rounded-none rounded-tr-xl px-5 py-4 h-max"
+        >
           Get started <ArrowUpRight size={18} />
         </Button>
       </div>

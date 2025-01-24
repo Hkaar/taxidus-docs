@@ -1,5 +1,10 @@
-import ThemeToggle from "@/components/ThemeToggle";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
+import Github from "@/components/icons/Github";
+import { Menu } from "lucide-react";
+
+import ThemeToggle from "@/components/ThemeToggle";
 import {
   ListItem,
   NavigationMenu,
@@ -11,11 +16,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button, buttonVariants } from "@/components/ui/button";
-import Github from "@/components/icons/Github";
-import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
-import { useState } from "react";
-import UserMenu from "./UserMenu";
+import UserMenu from "@/components/UserMenu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -67,15 +68,15 @@ function Header({ className, path }: HeaderProps) {
   return (
     <header
       className={cn(
-        "py-4 border-b border-gray-200 dark:border-neutral-800",
+        "border-b border-gray-200 dark:border-neutral-800",
         className
       )}
     >
-      <div className="px-6 flex gap-3 lg:items-center flex-col lg:flex-row justify-between">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-3">
-          <div className="flex justify-between items-center gap-3">
-            <a href="/">
-              <h1 className="text-3xl font-extrabold tracking-tighter">
+      <div className="flex gap-3 lg:items-center flex-col lg:flex-row justify-between">
+        <div className="flex flex-col lg:flex-row lg:items-center min-h-16">
+          <div className="flex justify-between items-center gap-3 h-16 px-4 lg:px-0">
+            <a href="/" className="lg:border-r border-gray-200 dark:border-neutral-800 h-16 flex items-center">
+              <h1 className="text-3xl font-extrabold tracking-tighter lg:px-4">
                 TAXIDUS
               </h1>
             </a>
@@ -92,17 +93,15 @@ function Header({ className, path }: HeaderProps) {
 
           <NavigationMenu
             orientation="vertical"
-            className={`items-start lg:items-center max-w-none lg:flex ${
-              collapse ? "hidden" : "flex"
-            }`}
+            className={cn("items-start lg:items-center max-w-none lg:flex", collapse ? "hidden" : "flex" )}
           >
-            <NavigationMenuList className="flex-col lg:flex-row">
-              <NavigationMenuItem className="w-full">
+            <NavigationMenuList className="flex-col lg:flex-row lg:items-center w-full">
+              <NavigationMenuItem className="w-full h-16">
                 <NavigationMenuLink
                   href="/"
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    "items-start lg:items-center"
+                    "items-start lg:items-center h-16 rounded-none px-6 border-r border-gray-200 dark:border-neutral-800"
                   )}
                 >
                   Home
@@ -110,7 +109,7 @@ function Header({ className, path }: HeaderProps) {
               </NavigationMenuItem>
 
               <NavigationMenuItem className="w-full">
-                <NavigationMenuTrigger className="items-start lg:items-center">
+                <NavigationMenuTrigger className="items-start lg:items-center h-16 rounded-none border-r border-gray-200 dark:border-neutral-800">
                   Getting started
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -148,7 +147,7 @@ function Header({ className, path }: HeaderProps) {
               </NavigationMenuItem>
 
               <NavigationMenuItem className="w-full">
-                <NavigationMenuTrigger className="items-start lg:items-center">
+                <NavigationMenuTrigger className="items-start lg:items-center h-16 rounded-none border-r border-gray-200 dark:border-neutral-800">
                   Documentation
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -170,27 +169,23 @@ function Header({ className, path }: HeaderProps) {
         </div>
 
         <div
-          className={`flex-col-reverse lg:flex-row lg:items-center gap-2 lg:flex ${
+          className={`flex-col-reverse lg:flex-row lg:items-center lg:flex ${
             collapse ? "hidden" : "flex"
           }`}
         >
-          <div className="flex items-center gap-1">
+          <div className="flex items-center">
             <a
               href="/"
-              className={buttonVariants({ variant: "ghost", size: "icon" })}
+              className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "rounded-none px-9 h-16 border-l border-gray-200 dark:border-neutral-800")}
             >
               <Github />
               <span className="sr-only">Github</span>
             </a>
 
-            <ThemeToggle />
+            <ThemeToggle className="px-9 h-16 rounded-none border-l border-gray-200 dark:border-neutral-800" />
           </div>
 
-          <div className="hidden lg:block my-2 md:my-0 md:mx-1">
-            <div className="w-full h-px md:w-px md:h-4 bg-gray-100 md:bg-gray-300 dark:bg-neutral-700"></div>
-          </div>
-
-          <div className="flex items-center gap-1">
+          <div className="flex items-center">
             <UserMenu />
           </div>
         </div>
