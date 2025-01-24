@@ -16,6 +16,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { User2, Home, Settings, LogOut } from "lucide-react";
 
 import defaultAvatar from "@/assets/profile.png";
+import { cn } from "@/lib/utils";
 
 const UserMenu = () => {
   return (
@@ -65,11 +66,11 @@ const UserMenu = () => {
       </Authorized>
 
       <Guest invisible>
-        <a href="/sign-up" className={buttonVariants({ variant: "default" })}>
+        <a href="/sign-up" className={cn(buttonVariants({ variant: "default" }), "rounded-none px-9 h-16")}>
           Sign up
         </a>
 
-        <a href="/login" className={buttonVariants({ variant: "outline" })}>
+        <a href="/login" className={cn(buttonVariants({ variant: "outline" }), "rounded-none px-9 h-16 border-none")}>
           Login
         </a>
       </Guest>
