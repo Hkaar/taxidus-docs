@@ -8,27 +8,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 import { BoxIcon, ArrowUpRight } from "lucide-react";
 
-interface PackCardProps {
+interface ProjectCardProps extends React.ComponentProps<"a"> {
   title: string;
-  ranking: number;
-  href: string;
-  tags: string[];
-  className?: string;
-  children?: React.ReactNode;
+  lastAccessed: string;
 }
 
-const PackCard = ({
+const ProjectCard = ({
   title,
-  ranking,
+  lastAccessed,
   href,
-  tags,
   className,
   children,
-}: PackCardProps) => {
+}: ProjectCardProps) => {
   return (
     <Card className={cn(className)}>
       <CardHeader className="flex flex-col gap-3">
@@ -38,21 +32,17 @@ const PackCard = ({
             <CardTitle className="lowercase">{title}</CardTitle>
           </div>
 
-          <span className="text-lg"> #{ranking} </span>
-        </div>
-
-        <div className="flex items-center gap-1">
-          {tags.map((tag) => (
-            <Badge>{tag}</Badge>
-          ))}
+          <span className="text-sm"> {lastAccessed} </span>
         </div>
       </CardHeader>
 
-      <CardContent>{children}</CardContent>
+      <CardContent>
+        {children || <span>No description was provided...</span>}
+      </CardContent>
 
       <CardFooter>
-        <a href={href} className={buttonVariants({ variant: "secondary" })}>
-          More info
+        <a href={href} className={buttonVariants({ variant: "default" })}>
+          Open
           <ArrowUpRight strokeWidth={1.5} />
         </a>
       </CardFooter>
@@ -60,4 +50,4 @@ const PackCard = ({
   );
 };
 
-export default PackCard;
+export default ProjectCard;

@@ -11,12 +11,9 @@ import { cn } from "@/lib/utils";
 
 import { ContainerIcon, Clock, LogIn } from "lucide-react";
 
-interface SessionCardProps {
+interface SessionCardProps extends React.ComponentProps<"a"> {
   title: string;
   activeFor: number;
-  href: string;
-  className?: string;
-  children?: React.ReactNode;
 }
 
 const calculateTime = (mins: number) => {
