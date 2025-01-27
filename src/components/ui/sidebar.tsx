@@ -67,7 +67,7 @@ const SideBarContainer = React.forwardRef<
       <SideBarOverlay sideBarId={id} />
       <div
         className={cn(
-          "fixed top-0 flex flex-col w-screen lg:w-full -translate-x-full overflow-y-auto max-w-full min-h-screen z-40 transition-all duration-300 ease-in-out md:max-w-96 xl:relative xl:z-0 xl:h-auto xl:translate-x-0 bg-gray-50 dark:bg-neutral-900",
+          "fixed top-0 flex flex-col w-screen lg:w-full -translate-x-full overflow-y-auto max-w-full min-h-screen z-40 transition-all duration-300 ease-in-out md:max-w-96 xl:relative xl:z-0 xl:h-auto xl:translate-x-0 bg-white dark:bg-neutral-900",
           className
         )}
         ref={ref}
@@ -175,8 +175,8 @@ const SideBarItem = ({ title, href, icon, className }: SideBarItemProps) => {
     <a
       href={href}
       className={cn(
-        "flex items-center gap-2",
-        buttonVariants({ variant: "link" }),
+        buttonVariants({variant: "ghost"}),
+        "flex items-center gap-2 rounded-none",
         className
       )}
     >
