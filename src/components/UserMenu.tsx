@@ -24,13 +24,15 @@ const UserMenu = () => {
       <Authorized invisible>
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <img
-              src={defaultAvatar.src}
-              alt="Profile"
-              className="rounded-full aspect-square size-8"
-            />
+            <div className="px-5 h-16 flex items-center justify-center border-l border-gray-200 dark:border-neutral-800">
+              <img
+                src={defaultAvatar.src}
+                alt="Profile"
+                className="rounded-full aspect-square size-8"
+              />
+            </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
@@ -66,11 +68,23 @@ const UserMenu = () => {
       </Authorized>
 
       <Guest invisible>
-        <a href="/sign-up" className={cn(buttonVariants({ variant: "default" }), "rounded-none px-9 h-16")}>
+        <a
+          href="/sign-up"
+          className={cn(
+            buttonVariants({ variant: "default" }),
+            "rounded-none px-9 h-16"
+          )}
+        >
           Sign up
         </a>
 
-        <a href="/login" className={cn(buttonVariants({ variant: "outline" }), "rounded-none px-9 h-16 border-none")}>
+        <a
+          href="/login"
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "rounded-none px-9 h-16 border-none"
+          )}
+        >
           Login
         </a>
       </Guest>

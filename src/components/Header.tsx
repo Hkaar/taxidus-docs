@@ -68,7 +68,7 @@ function Header({ className, path }: HeaderProps) {
   return (
     <header
       className={cn(
-        "border-b border-gray-200 dark:border-neutral-800",
+        "border-b border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900",
         className
       )}
     >
@@ -76,7 +76,7 @@ function Header({ className, path }: HeaderProps) {
         <div className="flex flex-col lg:flex-row lg:items-center min-h-16">
           <div className="flex justify-between items-center gap-3 h-16 px-4 lg:px-0">
             <a href="/" className="lg:border-r border-gray-200 dark:border-neutral-800 h-16 flex items-center">
-              <h1 className="text-3xl font-extrabold tracking-tighter lg:px-4">
+              <h1 className="text-3xl font-extrabold tracking-tighter lg:px-6">
                 TAXIDUS
               </h1>
             </a>
@@ -101,7 +101,7 @@ function Header({ className, path }: HeaderProps) {
                   href="/"
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    "items-start lg:items-center h-16 rounded-none px-6 border-r border-gray-200 dark:border-neutral-800"
+                    "items-start lg:items-center h-16 rounded-none px-6 border-r border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900"
                   )}
                 >
                   Home
@@ -109,7 +109,7 @@ function Header({ className, path }: HeaderProps) {
               </NavigationMenuItem>
 
               <NavigationMenuItem className="w-full">
-                <NavigationMenuTrigger className="items-start lg:items-center h-16 rounded-none border-r border-gray-200 dark:border-neutral-800">
+                <NavigationMenuTrigger className="items-start lg:items-center h-16 rounded-none border-r border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
                   Getting started
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -117,7 +117,7 @@ function Header({ className, path }: HeaderProps) {
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-gray-200/50 dark:bg-neutral-800/50 to-gray-200 dark:to-neutral-800 p-6 no-underline outline-none focus:shadow-md"
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-gray-200/50 dark:bg-neutral-800/50 to-gray-200 dark:to-neutral-800 p-6 no-underline outline-none focus:shadow-md "
                           href="/"
                         >
                           <div className="mb-2 mt-4 text-lg font-medium">
@@ -147,7 +147,7 @@ function Header({ className, path }: HeaderProps) {
               </NavigationMenuItem>
 
               <NavigationMenuItem className="w-full">
-                <NavigationMenuTrigger className="items-start lg:items-center h-16 rounded-none border-r border-gray-200 dark:border-neutral-800">
+                <NavigationMenuTrigger className="items-start lg:items-center h-16 rounded-none border-r border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
                   Documentation
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>

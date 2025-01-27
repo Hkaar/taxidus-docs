@@ -21,13 +21,13 @@ const DashboardHeader = ({ className, path }: HeaderProps) => {
   return (
     <header
       className={cn(
-        "py-4 border-b border-gray-200 dark:border-neutral-800",
+        "border-b border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900",
         className
       )}
     >
-      <div className="px-6 flex gap-3 lg:items-center flex-col lg:flex-row justify-between">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-3">
-          <div className="flex items-center justify-between gap-3">
+      <div className="flex lg:items-center flex-col lg:flex-row justify-between">
+        <div className="flex flex-col lg:flex-row lg:items-center">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-5">
               <SideBarToggle
                 sideBarId="dashboard-side-bar"
@@ -36,8 +36,11 @@ const DashboardHeader = ({ className, path }: HeaderProps) => {
                 <PanelLeft strokeWidth={1.5} />
               </SideBarToggle>
 
-              <a href="/">
-                <h1 className="text-3xl font-extrabold tracking-tighter">
+              <a
+                href="/home"
+                className="h-16 flex items-center"
+              >
+                <h1 className="text-3xl font-extrabold tracking-tighter lg:px-6">
                   TAXIDUS
                 </h1>
               </a>
@@ -55,27 +58,26 @@ const DashboardHeader = ({ className, path }: HeaderProps) => {
         </div>
 
         <div
-          className={`flex-row justify-between lg:items-center gap-2 lg:flex ${
+          className={`flex-col-reverse lg:flex-row lg:items-center lg:flex ${
             collapse ? "hidden" : "flex"
           }`}
         >
-          <div className="flex items-center gap-1">
+          <div className="flex items-center">
             <a
               href="/"
-              className={buttonVariants({ variant: "ghost", size: "icon" })}
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "icon" }),
+                "rounded-none px-9 h-16 border-l border-gray-200 dark:border-neutral-800"
+              )}
             >
               <Github />
               <span className="sr-only">Github</span>
             </a>
 
-            <ThemeToggle />
+            <ThemeToggle className="px-9 h-16 rounded-none border-l border-gray-200 dark:border-neutral-800" />
           </div>
 
-          <div className="hidden lg:block my-2 md:my-0 md:mx-1">
-            <div className="w-full h-px md:w-px md:h-4 bg-gray-100 md:bg-gray-300 dark:bg-neutral-700"></div>
-          </div>
-
-          <div className="flex items-center gap-1">
+          <div className="flex items-center">
             <UserMenu />
           </div>
         </div>
