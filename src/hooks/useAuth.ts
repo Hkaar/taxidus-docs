@@ -20,7 +20,6 @@ const useAuth = () => {
                 setIsAuthenticated(response.success);
             } catch (error) {
                 localStorage.removeItem('access_token');
-                localStorage.removeItem('refresh_token');
                 setIsAuthenticated(false);
             } finally {
                 setLoading(false);
