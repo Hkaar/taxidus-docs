@@ -10,6 +10,7 @@
     "lint": "npx eslint src/"
   },
   "dependencies": {
+    "@astrojs/node": "^9.0.2",
     "@astrojs/react": "^4.1.2",
     "@astrojs/tailwind": "^5.1.4",
     "@nanostores/react": "^0.8.4",
