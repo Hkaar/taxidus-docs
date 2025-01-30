@@ -5,8 +5,6 @@ import react from "@astrojs/react";
 
 import tailwind from "@astrojs/tailwind";
 
-import node from "@astrojs/node";
-
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -34,8 +32,4 @@ export default defineConfig({
       exclude: ["js-big-decimal"],
     },
   },
-
-  adapter: node({
-    mode: "standalone",
-  }),
 });
