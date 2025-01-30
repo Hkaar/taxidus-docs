@@ -67,7 +67,7 @@ const SideBarContainer = React.forwardRef<
       <SideBarOverlay sideBarId={id} />
       <div
         className={cn(
-          "fixed top-0 flex flex-col w-screen lg:w-full -translate-x-full overflow-y-auto max-w-full min-h-screen z-40 transition-all duration-300 ease-in-out md:max-w-96 xl:relative xl:z-0 xl:h-auto xl:translate-x-0 bg-gray-50 dark:bg-neutral-900",
+          "fixed top-0 flex flex-col w-screen lg:w-full -translate-x-full overflow-y-auto max-w-full min-h-screen z-40 transition-all duration-300 ease-in-out md:max-w-96 xl:relative xl:z-0 xl:h-auto xl:translate-x-0 bg-white dark:bg-neutral-900",
           className
         )}
         ref={ref}
@@ -175,8 +175,8 @@ const SideBarItem = ({ title, href, icon, className }: SideBarItemProps) => {
     <a
       href={href}
       className={cn(
-        "flex items-center gap-2",
-        buttonVariants({ variant: "link" }),
+        buttonVariants({variant: "ghost"}),
+        "flex justify-start items-center gap-2 rounded-none py-6 w-full",
         className
       )}
     >
@@ -206,13 +206,13 @@ const SideBarMenu = ({
   return (
     <Accordion type="single" className="w-full" collapsible>
       <AccordionItem value="item-1" className={cn("border-0", className)}>
-        <AccordionTrigger>
+        <AccordionTrigger className="border-b border-gray-200 dark:border-neutral-800 px-4">
           <span className="flex items-center gap-3 capitalize">
             {icon}
             {title}
           </span>
         </AccordionTrigger>
-        <AccordionContent>{children}</AccordionContent>
+        <AccordionContent className="pb-0">{children}</AccordionContent>
       </AccordionItem>
     </Accordion>
   );
