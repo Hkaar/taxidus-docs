@@ -16,42 +16,31 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button, buttonVariants } from "@/components/ui/button";
-import UserMenu from "@/components/UserMenu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Introduction",
     href: "/docs",
     description:
-      "Start your journey reading through the documentation from here",
+      "Get started reading the docs from here",
   },
   {
-    title: "How it works",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "Describes how taxidus works as a game system and the details around it",
-  },
-  {
-    title: "Development setup",
+    title: "Core concepts",
     href: "/docs",
     description:
-      "How to setup taxidus projects on your local machine for development",
+      "Explore the core concepts on which Taxidus is built",
   },
   {
-    title: "Concepts",
-    href: "/docs/primitives/scroll-area",
-    description: "Describes the concepts around how taxidus as a system works",
-  },
-  {
-    title: "Core",
-    href: "/docs/primitives/hover-card",
-    description: "A guide on how taxidus-core works and it's components",
+    title: "Game engine",
+    href: "/docs",
+    description:
+      "Read the documentation about the game engine that Taxidus uses",
   },
   {
     title: "API",
-    href: "/docs/primitives/progress",
+    href: "/docs",
     description:
-      "A guide for developers looking to develop an app with taxidus",
+      "Learn and read about the API that Taxidus Core provides"
   },
 ];
 
@@ -75,7 +64,10 @@ function Header({ className, path }: HeaderProps) {
       <div className="flex gap-3 lg:items-center flex-col lg:flex-row justify-between">
         <div className="flex flex-col lg:flex-row lg:items-center min-h-16">
           <div className="flex justify-between items-center gap-3 h-16 px-4 lg:px-0">
-            <a href="/" className="lg:border-r border-gray-200 dark:border-neutral-800 h-16 flex items-center">
+            <a
+              href="/"
+              className="lg:border-r border-gray-200 dark:border-neutral-800 h-16 flex items-center"
+            >
               <h1 className="text-3xl font-extrabold tracking-tighter lg:px-6">
                 TAXIDUS
               </h1>
@@ -93,7 +85,10 @@ function Header({ className, path }: HeaderProps) {
 
           <NavigationMenu
             orientation="vertical"
-            className={cn("items-start lg:items-center max-w-none lg:flex", collapse ? "hidden" : "flex" )}
+            className={cn(
+              "items-start lg:items-center max-w-none lg:flex",
+              collapse ? "hidden" : "flex"
+            )}
           >
             <NavigationMenuList className="flex-col lg:flex-row lg:items-center w-full">
               <NavigationMenuItem className="w-full h-16">
@@ -176,7 +171,10 @@ function Header({ className, path }: HeaderProps) {
           <div className="flex items-center">
             <a
               href="/"
-              className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "rounded-none px-9 h-16 border-l border-gray-200 dark:border-neutral-800")}
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "icon" }),
+                "rounded-none px-9 h-16 border-l border-gray-200 dark:border-neutral-800"
+              )}
             >
               <Github />
               <span className="sr-only">Github</span>
@@ -186,7 +184,25 @@ function Header({ className, path }: HeaderProps) {
           </div>
 
           <div className="flex items-center">
-            <UserMenu />
+            <a
+              href="/sign-up"
+              className={cn(
+                buttonVariants({ variant: "default" }),
+                "rounded-none px-9 h-16"
+              )}
+            >
+              Sign up
+            </a>
+
+            <a
+              href="/login"
+              className={cn(
+                buttonVariants({ variant: "ghost" }),
+                "rounded-none px-9 h-16 border-none"
+              )}
+            >
+              Login
+            </a>
           </div>
         </div>
       </div>

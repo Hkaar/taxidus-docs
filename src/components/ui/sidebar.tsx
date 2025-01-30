@@ -176,7 +176,7 @@ const SideBarItem = ({ title, href, icon, className }: SideBarItemProps) => {
       href={href}
       className={cn(
         buttonVariants({variant: "ghost"}),
-        "flex items-center gap-2 rounded-none",
+        "flex justify-start items-center gap-2 rounded-none py-6 w-full",
         className
       )}
     >
@@ -206,13 +206,13 @@ const SideBarMenu = ({
   return (
     <Accordion type="single" className="w-full" collapsible>
       <AccordionItem value="item-1" className={cn("border-0", className)}>
-        <AccordionTrigger>
+        <AccordionTrigger className="border-b border-gray-200 dark:border-neutral-800 px-4">
           <span className="flex items-center gap-3 capitalize">
             {icon}
             {title}
           </span>
         </AccordionTrigger>
-        <AccordionContent>{children}</AccordionContent>
+        <AccordionContent className="pb-0">{children}</AccordionContent>
       </AccordionItem>
     </Accordion>
   );

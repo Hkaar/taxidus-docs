@@ -17,7 +17,7 @@ const TableOfContents = ({ className, items }: TableOfContentsProps) => {
         )}
         {items.map((item, index) => (
           <li key={`table-content-item-${index}`} style={{ paddingLeft: (item.depth - 1) * 16 }}>
-            <a href={`#${item.slug}`} className={cn(buttonVariants({ variant: "link", size: "sm" }), "py-0")}>
+            <a href={`#${item.slug}`} className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "py-0")}>
 
               {item.text}
             </a>

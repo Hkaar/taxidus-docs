@@ -38,14 +38,14 @@ const ContentSideBar = ({
         </SideBarToggle>
       </SideBarHeader>
 
-      <SideBarContent>
-        <div className="flex flex-col gap-2 items-start">
+      <SideBarContent className="p-0">
+        <div className="flex flex-col items-start">
           {menus.map((menu, index) => (
             <SideBarItem
               key={`menu-${index}`}
               title={menu.title}
+              className="border-b border-gray-200 dark:border-neutral-800 py-7"
               href={menu.href}
-              className="px-0"
             />
           ))}
 
