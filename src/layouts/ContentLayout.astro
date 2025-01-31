@@ -14,6 +14,7 @@ interface Props {
   headings?: MarkdownHeading[];
   menus?: RawMenuItem[];
   collection: string;
+  active?: string;
   collectionTitle?: string;
 }
 
@@ -23,6 +24,7 @@ const {
   title = "Untitled",
   headings = [],
   menus = [],
+  active = "",
   collectionTitle,
 } = Astro.props;
 ---
@@ -36,6 +38,7 @@ const {
       className="flex-1"
       collection={collection}
       title={collectionTitle}
+      active={active}
       client:load
     />
 
@@ -44,7 +47,7 @@ const {
 
       <div class="flex gap-8 px-8 p-7">
         <article
-          class="prose prose-neutral dark:prose-gray dark:prose-invert md:w-[65ch]"
+          class="prose prose-neutral dark:prose-gray dark:prose-invert md:w-[65ch] scroll-smooth"
         >
           <slot />
         </article>
