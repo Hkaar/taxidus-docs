@@ -29,6 +29,7 @@ const { Content, headings } = await render(doc);
   headings={headings}
   menus={docs}
   collection="docs"
+  active={doc.data.slug}
   collectionTitle="Documentation"
 >
   <Content />

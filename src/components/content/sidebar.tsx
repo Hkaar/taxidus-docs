@@ -17,6 +17,7 @@ interface ContentSideBarProps extends Omit<SideBarContainerProps, "id"> {
   items?: RawMenuItem[];
   collection: string;
   title?: string;
+  active?: string;
 }
 
 const ContentSideBar = ({
@@ -24,6 +25,7 @@ const ContentSideBar = ({
   items = [],
   children,
   collection,
+  active,
   title,
 }: ContentSideBarProps) => {
   const [menus, nestedMenus] = generateMenus(collection, items);
@@ -44,7 +46,7 @@ const ContentSideBar = ({
             <SideBarItem
               key={`menu-${index}`}
               title={menu.title}
-              className="border-b border-gray-200 dark:border-neutral-800 py-7"
+              className={cn("border-b border-gray-200 dark:border-neutral-800 py-7", active === menu.slug && 'bg-gray-100 dark:bg-neutral-800')}
               href={menu.href}
             />
           ))}
@@ -54,7 +56,7 @@ const ContentSideBar = ({
               <ul className="border-l-2 border-gray-200 dark:border-neutral-800">
                 {menu.subMenus?.map((item, index) => (
                   <li key={`nested-side-bar-item-${index}`}>
-                    <SideBarItem title={item.title} href={item.href} />
+                    <SideBarItem title={item.title} href={item.href} className={cn(active === item.slug && 'bg-gray-100 dark:bg-neutral-800')} />
                   </li>
                 ))}
               </ul>

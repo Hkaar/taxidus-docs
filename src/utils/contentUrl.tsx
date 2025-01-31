@@ -32,7 +32,8 @@ function generateMenus(collectionName: string, items: RawMenuItem[]): [SideBarMe
     if (!item.group) {
       menus.push({
         title: item.title,
-        href: `${baseURL}/${item.href}`
+        href: `${baseURL}/${item.href}`,
+        slug: item.href,
       })
 
       return;
@@ -51,6 +52,7 @@ function generateMenus(collectionName: string, items: RawMenuItem[]): [SideBarMe
     menu.subMenus.push({
       title: item.title,
       href: `${baseURL}/${item.href}`,
+      slug: item.href
     });
   });
 

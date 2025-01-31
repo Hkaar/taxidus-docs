@@ -29,6 +29,7 @@ const { Content, headings } = await render(guide);
   headings={headings}
   menus={guides}
   collection="guides"
+  active={guide.data.slug}
   collectionTitle="Guides"
 >
   <Content />

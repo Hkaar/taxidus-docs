@@ -67,7 +67,7 @@ const SideBarContainer = React.forwardRef<
       <SideBarOverlay sideBarId={id} />
       <div
         className={cn(
-          "fixed top-0 flex flex-col w-screen lg:w-full -translate-x-full overflow-y-auto max-w-full min-h-screen z-40 transition-all duration-300 ease-in-out md:max-w-96 xl:relative xl:z-0 xl:h-auto xl:translate-x-0 bg-white dark:bg-neutral-900",
+          "fixed top-0 flex flex-col w-screen lg:w-full -translate-x-full overflow-y-auto max-w-full min-h-screen z-40 transition-all duration-300 ease-in-out md:max-w-80 xl:relative xl:z-0 xl:h-auto xl:translate-x-0 bg-white dark:bg-neutral-900",
           className
         )}
         ref={ref}
@@ -90,7 +90,7 @@ const SideBarHeader = React.forwardRef<HTMLDivElement, SideBarHeaderProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <div
-        className={cn("px-6 py-5 bg-gray-200 dark:bg-neutral-800", className)}
+        className={cn("px-6 py-5 bg-white dark:bg-neutral-800/75", className)}
         ref={ref}
         {...props}
       >
@@ -188,6 +188,7 @@ const SideBarItem = ({ title, href, icon, className }: SideBarItemProps) => {
 export type SideBarMenuItem = {
   title: string;
   href: string;
+  slug?: string;
 };
 
 interface SideBarMenuProps {
