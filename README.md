@@ -1,5 +1,10 @@
 # Taxidus Documentation
 
+> Heads up!
+>
+> We are discontinuing work on this origin of the repo
+> And will be moving to <https://gitlab.com/trimedge/taxidus-project/docs>.
+
 The official documentation on all things (maybe) related to Taxidus
 
 ```ascii
